@@ -43,6 +43,8 @@ FETCH_SCRIPT = PROJECT_ROOT / "generator" / "fetch_facts.py"
 DEFAULT_CONFIG = {
     "card_title": "MC 冷知识",
     "facts_per_page": 3,
+    # 一次生成几组冷知识：主页上点刷新按钮会在这些组之间轮换，不用等服务器更新
+    "fact_sets": 4,
     "min_len": 15,
     "max_len": 180,
     "footer": "内容来自中文 Minecraft Wiki，以 CC BY-NC-SA 3.0 许可共享；点击链接可核对原文。",
@@ -152,6 +154,93 @@ def xml_escape(text):
 
 
 def build_xaml(picked, config, version):
+    """生成主页 XAML。
+
+    picked 里包含 facts_per_page × fact_sets 条冷知识：
+    同一时刻只显示一组，点右上角按钮会在各组之间轮换（靠 PCL 的变量与条件显示实现），
+    这样即使服务器还没更新，刷新也能看到新内容。
+    """
+    per_page = config["facts_per_page"]
+    sets = []
+    for start in range(0, len(picked), per_page):
+        group = picked[start:start + per_page]
+        if len(group) == per_page:
+            sets.append(group)
+    if not sets:
+        sets = [picked[:per_page]]
+
+    total = len(sets)
+
+    def fact_blocks(group, set_index):
+        """一组冷知识（3 条）的 XAML，整组共用一个显示条件。"""
+        is_first = set_index == 0
+        visibility = ("" if is_first
+                      else ' Visibility="{variable:Rotation:%d}"' % (set_index + 1))
+        inner = []
+        for index, (title, fact, url) in enumerate(group, start=1):
+            source_line = "来源：%s（%s）" % (title, url)
+            inner.append(
+                '                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"\n'
+                '                           Text="%s. %s" />\n'
+                '                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"\n'
+                '                           Text="%s" />\n'
+                '                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"\n'
+                '                           Foreground="{DynamicResource ColorBrush2}"\n'
+                '                           Text="%s" />\n'
+                % (index, xml_escape(title), xml_escape(fact), xml_escape(source_line))
+            )
+        return ('            <StackPanel%s>\n%s            </StackPanel>\n'
+                % (visibility, "".join(inner)))
+
+    def rotate_button(set_index):
+        """第 set_index 组对应的换一批按钮：把自己这一轮换成下一轮。"""
+        next_index = (set_index + 1) % total + 1
+        visibility = ("" if set_index == 0
+                      else ' Visibility="{variable:Rotation:%d}"' % (set_index + 1))
+        return (
+            '        <local:MyIconButton Height="22" Width="22" Margin="9"\n'
+            '                           VerticalAlignment="Top" HorizontalAlignment="Right"%s\n'
+            '                           ToolTip="换一批冷知识"\n'
+            '                           Logo="%s">\n'
+            '            <local:CustomEventService.Events>\n'
+            '                <local:CustomEventCollection>\n'
+            '                    <local:CustomEvent Type="修改变量" Data="Rotation|%d|-" />\n'
+            '                    <local:CustomEvent Type="刷新页面" Data="-" />\n'
+            '                </local:CustomEventCollection>\n'
+            '            </local:CustomEventService.Events>\n'
+            '        </local:MyIconButton>\n'
+            % (visibility, REFRESH_LOGO, next_index)
+        )
+
+    sets_xaml = "".join(fact_blocks(group, index) for index, group in enumerate(sets))
+    buttons_xaml = "".join(rotate_button(index) for index in range(total))
+
+    footer = config["footer"]
+    note = config.get("source_note")
+    if note:
+        footer = "%s\n%s" % (footer, note)
+
+    return (
+        '<!-- 由 build_xaml.py 自动生成，生成时间 %s，版本 %s，共 %d 组冷知识 -->\n'
+        '<local:MyCard Title="%s" Margin="0,0,0,15">\n'
+        '    <TextBlock Margin="25,40,23,0" TextWrapping="Wrap" FontSize="11"\n'
+        '               Foreground="{DynamicResource ColorBrush3}"\n'
+        '               Text="点右上角按钮可以换一批" />\n'
+        '%s'
+        '    <StackPanel Margin="25,6,23,15">\n'
+        '%s'
+        '        <TextBlock TextWrapping="Wrap" Margin="0,4,0,0" FontSize="11"\n'
+        '                   Foreground="{DynamicResource ColorBrush3}"\n'
+        '                   Text="%s" />\n'
+        '    </StackPanel>\n'
+        '</local:MyCard>\n'
+        % (datetime.now().strftime("%Y/%m/%d %H:%M"), version, total,
+           xml_escape(config["card_title"]), buttons_xaml, sets_xaml, xml_escape(footer))
+    )
+
+
+def build_xaml_simple(picked, config, version):
+    """（保留）不带轮换、直接把所有条目铺开的版本，供单组场景使用。"""
     facts_xaml = []
     for index, (title, fact, url) in enumerate(picked, start=1):
         source_line = "来源：%s（%s）" % (title, url)
@@ -338,7 +427,9 @@ def main():
     config = load_config()
     entries = load_facts(args.facts)
     rng = random.Random(args.seed)
-    picked = pick_facts(entries, config["facts_per_page"], config["min_len"], config["max_len"], rng)
+    per_page = config["facts_per_page"]
+    set_count = max(1, config.get("fact_sets", 1))
+    picked = pick_facts(entries, per_page * set_count, config["min_len"], config["max_len"], rng)
     version = args.version or (datetime.now(timezone(timedelta(hours=8))).strftime("%Y%m%d%H%M%S"))
 
     xaml = build_xaml(picked, config, version)
@@ -357,9 +448,12 @@ def main():
     if not args.no_preview:
         log("  %s" % PREVIEW_FILE)
     log("")
-    log("本次抽到：")
-    for title, fact, _ in picked:
-        log("  [%s] %s" % (title, fact))
+    log("本次抽到 %d 组、共 %d 条（点主页按钮可在这些组之间轮换）：" % (set_count, len(picked)))
+    for set_index in range(set_count):
+        group = picked[set_index * per_page:(set_index + 1) * per_page]
+        log("  【第 %d 组】" % (set_index + 1))
+        for title, fact, _ in group:
+            log("    [%s] %s" % (title, fact))
 
 
 if __name__ == "__main__":
