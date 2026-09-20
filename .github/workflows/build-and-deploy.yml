@@ -56,6 +56,11 @@ jobs:
             git push
           fi
 
+      - name: 移动 latest 标签（让 jsDelivr 这类 CDN 立即拿到新内容）
+        run: |
+          git tag -f latest
+          git push -f origin latest
+
       - name: 打包成 Pages 产物
         uses: actions/upload-pages-artifact@v3
         with:
