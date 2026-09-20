@@ -43,6 +43,17 @@ jobs:
         run: |
           python generator/build_xaml.py --out publish --update-source --source-target 3 --version "$(date -u +%Y%m%d%H%M%S)"
 
+      - name: 额外生成几份"起始组不同"的副本
+        run: |
+          # 同一批内容、不同的起始组，发给不同的人，第一眼看到的不一样。
+          # 想加更多份就照着写，start-group 取 1..12 之间的值。
+          VERSION="$(cat publish/Custom.xaml.ini)"
+          for spec in "1:a" "4:b" "7:c" "10:d"; do
+            group="${spec%%:*}"; tag="${spec##*:}"
+            python generator/build_xaml.py --out "publish/variant-$tag" \
+              --no-preview --start-group "$group" --tag "$tag" --version "$VERSION"
+          done
+
       - name: 校验生成结果
         run: python generator/check_output.py publish/Custom.xaml
 
