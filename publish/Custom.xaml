@@ -1,34 +1,145 @@
-<!-- 由 build_xaml.py 自动生成，生成时间 2026/09/20 09:55，版本 20260920095502 -->
+<!-- 由 build_xaml.py 自动生成，生成时间 2026/09/20 10:14，版本 20260920101412，共 4 组冷知识 -->
 <local:MyCard Title="MC 冷知识" Margin="0,0,0,15">
-    <StackPanel Margin="25,40,23,15">
+    <TextBlock Margin="25,40,23,0" TextWrapping="Wrap" FontSize="11"
+               Foreground="{DynamicResource ColorBrush3}"
+               Text="点右上角按钮可以换一批" />
         <local:MyIconButton Height="22" Width="22" Margin="9"
                            VerticalAlignment="Top" HorizontalAlignment="Right"
-                           EventType="刷新主页" EventData="/"
                            ToolTip="换一批冷知识"
-                           Logo="M512.0 838.3c-80.2 0-153.4-29.3-210.2-77.4l75.5-75.5c11.5-11.5 25.8-22.0 25.8-37.0a27.2 27.2 0 0 0-27.1-27.1H104.0c-27.1 0-27.1 23.9-27.1 27.1v271.9a27.1 27.1 0 0 0 27.1 27.1c15.0 0 27.8-16.6 42.5-31.2l77.9-77.9c76.6 67.7 177.1 108.9 287.4 108.9 221.7 0 404.5-166.0 431.2-380.6h-109.8c-25.9 154.2-159.7 271.9-321.3 271.9zM919.9 76.6c-15.0 0-27.8 16.6-42.5 31.3L799.5 185.8c-76.5-67.7-177.1-108.9-287.4-108.9-221.8 0-404.5 166.1-431.3 380.6H190.6c25.9-154.2 159.7-271.9 321.4-271.9 80.2 0 153.4 29.3 210.1 77.4l-75.5 75.5c-11.6 11.5-25.8 22.0-25.8 37.1a27.2 27.2 0 0 0 27.1 27.1h271.9c27.1 0 27.1-23.9 27.1-27.1V103.8a27.1 27.1 0 0 0-27.1-27.1z" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                   Text="1. 成就" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                   Text="“Monster-Hunter”（Monster-Hunter）出自Capcom同名游戏系列《怪物猎人》。" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
-                   Foreground="{DynamicResource ColorBrush2}"
-                   Text="来源：成就（https://zh.minecraft.wiki/w/%E6%88%90%E5%B0%B1）" />
-
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                   Text="2. 猫" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                   Text="黑猫的皮肤外观基于孟买猫。其祖先品种是缅甸猫和美国短毛猫。" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
-                   Foreground="{DynamicResource ColorBrush2}"
-                   Text="来源：猫（https://zh.minecraft.wiki/w/%E7%8C%AB）" />
-
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                   Text="3. 树莓派版" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                   Text="尽管此版本需要OpenGL ES 1，但它只能链接到OpenGL ES 2。" />
-        <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
-                   Foreground="{DynamicResource ColorBrush2}"
-                   Text="来源：树莓派版（https://zh.minecraft.wiki/w/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%89%88）" />
+                           Logo="M512.0 838.3c-80.2 0-153.4-29.3-210.2-77.4l75.5-75.5c11.5-11.5 25.8-22.0 25.8-37.0a27.2 27.2 0 0 0-27.1-27.1H104.0c-27.1 0-27.1 23.9-27.1 27.1v271.9a27.1 27.1 0 0 0 27.1 27.1c15.0 0 27.8-16.6 42.5-31.2l77.9-77.9c76.6 67.7 177.1 108.9 287.4 108.9 221.7 0 404.5-166.0 431.2-380.6h-109.8c-25.9 154.2-159.7 271.9-321.3 271.9zM919.9 76.6c-15.0 0-27.8 16.6-42.5 31.3L799.5 185.8c-76.5-67.7-177.1-108.9-287.4-108.9-221.8 0-404.5 166.1-431.3 380.6H190.6c25.9-154.2 159.7-271.9 321.4-271.9 80.2 0 153.4 29.3 210.1 77.4l-75.5 75.5c-11.6 11.5-25.8 22.0-25.8 37.1a27.2 27.2 0 0 0 27.1 27.1h271.9c27.1 0 27.1-23.9 27.1-27.1V103.8a27.1 27.1 0 0 0-27.1-27.1z">
+            <local:CustomEventService.Events>
+                <local:CustomEventCollection>
+                    <local:CustomEvent Type="修改变量" Data="Rotation|2|-" />
+                    <local:CustomEvent Type="刷新页面" Data="-" />
+                </local:CustomEventCollection>
+            </local:CustomEventService.Events>
+        </local:MyIconButton>
+        <local:MyIconButton Height="22" Width="22" Margin="9"
+                           VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Rotation:2}"
+                           ToolTip="换一批冷知识"
+                           Logo="M512.0 838.3c-80.2 0-153.4-29.3-210.2-77.4l75.5-75.5c11.5-11.5 25.8-22.0 25.8-37.0a27.2 27.2 0 0 0-27.1-27.1H104.0c-27.1 0-27.1 23.9-27.1 27.1v271.9a27.1 27.1 0 0 0 27.1 27.1c15.0 0 27.8-16.6 42.5-31.2l77.9-77.9c76.6 67.7 177.1 108.9 287.4 108.9 221.7 0 404.5-166.0 431.2-380.6h-109.8c-25.9 154.2-159.7 271.9-321.3 271.9zM919.9 76.6c-15.0 0-27.8 16.6-42.5 31.3L799.5 185.8c-76.5-67.7-177.1-108.9-287.4-108.9-221.8 0-404.5 166.1-431.3 380.6H190.6c25.9-154.2 159.7-271.9 321.4-271.9 80.2 0 153.4 29.3 210.1 77.4l-75.5 75.5c-11.6 11.5-25.8 22.0-25.8 37.1a27.2 27.2 0 0 0 27.1 27.1h271.9c27.1 0 27.1-23.9 27.1-27.1V103.8a27.1 27.1 0 0 0-27.1-27.1z">
+            <local:CustomEventService.Events>
+                <local:CustomEventCollection>
+                    <local:CustomEvent Type="修改变量" Data="Rotation|3|-" />
+                    <local:CustomEvent Type="刷新页面" Data="-" />
+                </local:CustomEventCollection>
+            </local:CustomEventService.Events>
+        </local:MyIconButton>
+        <local:MyIconButton Height="22" Width="22" Margin="9"
+                           VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Rotation:3}"
+                           ToolTip="换一批冷知识"
+                           Logo="M512.0 838.3c-80.2 0-153.4-29.3-210.2-77.4l75.5-75.5c11.5-11.5 25.8-22.0 25.8-37.0a27.2 27.2 0 0 0-27.1-27.1H104.0c-27.1 0-27.1 23.9-27.1 27.1v271.9a27.1 27.1 0 0 0 27.1 27.1c15.0 0 27.8-16.6 42.5-31.2l77.9-77.9c76.6 67.7 177.1 108.9 287.4 108.9 221.7 0 404.5-166.0 431.2-380.6h-109.8c-25.9 154.2-159.7 271.9-321.3 271.9zM919.9 76.6c-15.0 0-27.8 16.6-42.5 31.3L799.5 185.8c-76.5-67.7-177.1-108.9-287.4-108.9-221.8 0-404.5 166.1-431.3 380.6H190.6c25.9-154.2 159.7-271.9 321.4-271.9 80.2 0 153.4 29.3 210.1 77.4l-75.5 75.5c-11.6 11.5-25.8 22.0-25.8 37.1a27.2 27.2 0 0 0 27.1 27.1h271.9c27.1 0 27.1-23.9 27.1-27.1V103.8a27.1 27.1 0 0 0-27.1-27.1z">
+            <local:CustomEventService.Events>
+                <local:CustomEventCollection>
+                    <local:CustomEvent Type="修改变量" Data="Rotation|4|-" />
+                    <local:CustomEvent Type="刷新页面" Data="-" />
+                </local:CustomEventCollection>
+            </local:CustomEventService.Events>
+        </local:MyIconButton>
+        <local:MyIconButton Height="22" Width="22" Margin="9"
+                           VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Rotation:4}"
+                           ToolTip="换一批冷知识"
+                           Logo="M512.0 838.3c-80.2 0-153.4-29.3-210.2-77.4l75.5-75.5c11.5-11.5 25.8-22.0 25.8-37.0a27.2 27.2 0 0 0-27.1-27.1H104.0c-27.1 0-27.1 23.9-27.1 27.1v271.9a27.1 27.1 0 0 0 27.1 27.1c15.0 0 27.8-16.6 42.5-31.2l77.9-77.9c76.6 67.7 177.1 108.9 287.4 108.9 221.7 0 404.5-166.0 431.2-380.6h-109.8c-25.9 154.2-159.7 271.9-321.3 271.9zM919.9 76.6c-15.0 0-27.8 16.6-42.5 31.3L799.5 185.8c-76.5-67.7-177.1-108.9-287.4-108.9-221.8 0-404.5 166.1-431.3 380.6H190.6c25.9-154.2 159.7-271.9 321.4-271.9 80.2 0 153.4 29.3 210.1 77.4l-75.5 75.5c-11.6 11.5-25.8 22.0-25.8 37.1a27.2 27.2 0 0 0 27.1 27.1h271.9c27.1 0 27.1-23.9 27.1-27.1V103.8a27.1 27.1 0 0 0-27.1-27.1z">
+            <local:CustomEventService.Events>
+                <local:CustomEventCollection>
+                    <local:CustomEvent Type="修改变量" Data="Rotation|1|-" />
+                    <local:CustomEvent Type="刷新页面" Data="-" />
+                </local:CustomEventCollection>
+            </local:CustomEventService.Events>
+        </local:MyIconButton>
+    <StackPanel Margin="25,6,23,15">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="1. 潮涌核心" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="使用指令或者世界预设放置的潮涌核心总是含水的。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：潮涌核心（https://zh.minecraft.wiki/w/%E6%BD%AE%E6%B6%8C%E6%A0%B8%E5%BF%83）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="2. Java版15w14a" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="金色苦力怕会在丛林神庙中生成。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：Java版15w14a（https://zh.minecraft.wiki/w/Java%E7%89%8815w14a）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="3. 书与笔" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="书与笔的第100页仍旧有右翻页，但是点击以后无法生成新的书页，而成书的最后一页是没有右翻页的。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：书与笔（https://zh.minecraft.wiki/w/%E4%B9%A6%E4%B8%8E%E7%AC%94）" />
+            </StackPanel>
+            <StackPanel Visibility="{variable:Rotation:2}">
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="1. 市场" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="在市场加入Minecraft前，游戏内的纹理包和皮肤需要使用真实货币来购买，因此Mojang加入任何内容前都必须经过每个平台的认证。加入市场和Minecoin便是为了避免此事发生。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：市场（https://zh.minecraft.wiki/w/%E5%B8%82%E5%9C%BA）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="2. 熊猫" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="为了给熊猫创造游戏中的音效，Mojang的首席声音设计师Samuel Åberg亲自到广州录制了大熊猫的声音。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：熊猫（https://zh.minecraft.wiki/w/%E7%86%8A%E7%8C%AB）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="3. Java版3D Shareware v1.34" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="加载界面中的“Loading MINECRAF.WAD”的文字指的是文件格式（.wad），其经常用于《毁灭战士》及其续作《毁灭战士II》的数据存储。根据此版本的背景故事，Minecraft 3D很可能在《毁灭战士》首次发布的1年后（即1995年）制作完成的。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：Java版3D Shareware v1.34（https://zh.minecraft.wiki/w/Java%E7%89%883D_Shareware_v1.34）" />
+            </StackPanel>
+            <StackPanel Visibility="{variable:Rotation:3}">
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="1. 格挡" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="格挡姿态的减慢速度效果是达到最小移动速度的要素之一。要达到最小移动速度，玩家需同时潜行并格挡，获得缓慢效果，倒退走过放在冰上的灵魂沙，穿过水和蜘蛛网。此时玩家的移动速度约为1方块每秒，或16x16纹理下的1 - 1像素每秒。在没有缓慢效果的情况下，玩家移动速度约为0.023854961832格每秒（1格41.92秒）。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：格挡（https://zh.minecraft.wiki/w/%E6%A0%BC%E6%8C%A1）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="2. 游泳" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="通过在水源或在冰上疾跑来降低天花板高度，可以加速得更快。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：游泳（https://zh.minecraft.wiki/w/%E6%B8%B8%E6%B3%B3）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="3. Java版24w13a" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="因为，原计划在“”实验性内容中加入的3种魔咒和6种状态效果均可在不启用此实验性内容的情况下获取。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：Java版24w13a（https://zh.minecraft.wiki/w/Java%E7%89%8824w13a）" />
+            </StackPanel>
+            <StackPanel Visibility="{variable:Rotation:4}">
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="1. 音乐唱片stal" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="“Stal”是瑞典语，意即英语的“stole”（“偷”的过去式），但也可以是有上圆圈变音符号的“stål”，意思是英语的“steel”（钢；坚韧）。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：音乐唱片stal（https://zh.minecraft.wiki/w/%E9%9F%B3%E4%B9%90%E5%94%B1%E7%89%87stal）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="2. 多重射击" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="带有高等级多重射击的弩射出的箭的初速度方向在同一平面内，形成的圆形所在平面的倾斜角与玩家的俯仰角相同，即向后方向射出的箭沿视线的反方向；而在Java版中带有高等级多重射击的弓射出的箭的初速度方向组成一个圆锥面，即向后方向射出的箭不一定沿视线的反方向。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：多重射击（https://zh.minecraft.wiki/w/%E5%A4%9A%E9%87%8D%E5%B0%84%E5%87%BB）" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                           Text="3. 太阳" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                           Text="这是由于游戏在玩家直接暴露在天空下时对太阳有着特殊的渲染方式。" />
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"
+                           Foreground="{DynamicResource ColorBrush2}"
+                           Text="来源：太阳（https://zh.minecraft.wiki/w/%E5%A4%AA%E9%98%B3）" />
+            </StackPanel>
         <TextBlock TextWrapping="Wrap" Margin="0,4,0,0" FontSize="11"
                    Foreground="{DynamicResource ColorBrush3}"
                    Text="内容来自中文 Minecraft Wiki，以 CC BY-NC-SA 3.0 许可共享；点击链接可核对原文。
