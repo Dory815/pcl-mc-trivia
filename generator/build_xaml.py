@@ -403,6 +403,9 @@ def main():
     if not args.no_preview:
         PREVIEW_FILE.parent.mkdir(parents=True, exist_ok=True)
         PREVIEW_FILE.write_text(build_preview(picked, config, version, entries), encoding="utf-8")
+        # 往输出目录也写一份：发布之后可以直接在浏览器里看效果，不用开 PCL 试
+        (out_dir / "index.html").write_text(
+            build_preview(picked, config, version, entries), encoding="utf-8")
 
     log("已生成（版本 %s，耗时 %.1f 秒）：" % (version, time.time() - started))
     log("  %s" % (out_dir / "Custom.xaml"))
