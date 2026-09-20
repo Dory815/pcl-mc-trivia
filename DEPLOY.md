@@ -17,14 +17,14 @@
 ### 三条订阅地址（实测均可用）
 
 ```
-① 镜像（能立即拿到最新内容，推荐）
+① 镜像（推荐，国内访问稳）
 https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
 
-② jsDelivr CDN（用 latest 标签，工作流会移动它来绕过缓存）
-https://fastly.jsdelivr.net/gh/Dory815/pcl-mc-trivia@latest/publish/Custom.xaml
-
-③ GitHub Pages
+② GitHub Pages（官方线路，校园网/海外更顺）
 https://dory815.github.io/pcl-mc-trivia/Custom.xaml
+
+③ 备用镜像
+https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
 ```
 
 ### 关键发现：镜像站的缓存差别很大
@@ -37,17 +37,69 @@ https://dory815.github.io/pcl-mc-trivia/Custom.xaml
 | gh-proxy.com | 可用，最快 226 毫秒 | **会缓存旧版**（实测仍返回上一版） |
 | ghproxy.net | 可用 | 能，立刻拿到最新 |
 | ghfast.top | 可用 | 能，立刻拿到最新 |
-| fastly.jsdelivr.net `@main` | 可用 | 会缓存旧版 |
-| fastly.jsdelivr.net `@latest`（移动标签） | 可用 | 能，立刻拿到最新 |
+| fastly.jsdelivr.net `@main` | 可用 | 会缓存旧版（实测落后很久） |
+| fastly.jsdelivr.net `@latest`（移动标签） | 可用 | **实测也会缓存旧版，不可靠** |
 | GitHub Pages | 可用，515 毫秒 | 能，立刻拿到最新 |
+| ghproxy.net | 可用 | 能，立刻拿到最新 |
+| ghfast.top | 可用 | 能，立刻拿到最新 |
 
 结论：
 
 1. 直连在校园网就超时，所以给别人的地址一定要用镜像或 Pages。
 2. **gh-proxy.com 虽然快，但会缓存旧版本**，主页会一直显示上一批内容，
    所以不再作为首选。
-3. jsDelivr 用固定的 `@main` 会被缓存 7 天，改用**每次更新都会移动的 `latest` 标签**，
-   实测能立即拿到新内容（工作流里已加上移动标签的步骤）。
+3. jsDelivr 无论用 `@main` 还是移动标签 `@latest` 都可能返回旧内容，
+   **不要用它作为主线路**。工作流里仍保留移动标签的步骤（无害），
+   但对外推荐 ghproxy.net 与 GitHub Pages。
+
+> 这条经验很关键：镜像/加速站为了省流量会长时间缓存，
+> 一旦它们缓存了某个**有问题的版本**，用户就会一直看到报错。
+> 所以每次改动后务必用"能不能立刻拿到新内容"这条标准复测线路。
+
+---
+
+## 六、刷新按钮"没反应"的根因与解法
+
+调查中发现两件事，都是真实存在、且已经修好的：
+
+### 1. GitHub 的定时任务不一定会准时跑
+
+仓库 09:53 建好，工作流 09:54 首次成功，但 10:00 那次定时触发过了十几分钟还没出现。
+GitHub 对免费账号的 cron 常有延迟（官方的说法是高峰期可能延迟甚至跳过）。
+
+所以不能指望"整点一定换内容"。真正让用户随时能看到新内容的是下面这个机制。
+
+### 2. 客户端轮换：一次给 4 组，点刷新就换
+
+生成器现在一次抽取 `facts_per_page × fact_sets`（默认 3 × 4 = 12）条冷知识，
+拆成 4 组写进同一个文件，用 PCL 的"变量 + 条件显示"在客户端轮换：
+
+```xml
+<!-- 每组的显示条件不同 -->
+<StackPanel Visibility="{variable:Rotation:2}"> ... 第 2 组 ... </StackPanel>
+
+<!-- 按钮写变量后刷新页面，下一组就出现了 -->
+<local:MyIconButton ...>
+    <local:CustomEventService.Events>
+        <local:CustomEventCollection>
+            <local:CustomEvent Type="修改变量" Data="Rotation|3|-" />
+            <local:CustomEvent Type="刷新页面" Data="-" />
+        </local:CustomEventCollection>
+    </local:CustomEventService.Events>
+</local:MyIconButton>
+```
+
+按钮本身也是 4 个互相隐藏的副本，点一次把 `Rotation` 推到下一个值，形成循环。
+全部在本地完成，**不发网络请求、瞬间生效**，服务器有没有更新都不影响。
+
+配置项在 `generator/config.json` 里的 `fact_sets`，想多给几组就把它调大
+（文件体积会线性增长，4 组约 12 KB）。
+
+### 3. 并发推送冲突
+
+同一时间两次运行（比如手动触发时恰好有推送触发）会同时提交，后一个 push 被拒。
+已在工作流里加上"先 rebase 再推送，最多重试 5 次"，并让标签推送不再触发新运行
+（`push.branches: main`）。
 
 ---
 
