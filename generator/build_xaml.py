@@ -237,6 +237,26 @@ def build_xaml(picked, config, version):
     if note:
         footer = "%s\n%s" % (footer, note)
 
+    # 救急按钮：万一变量被写坏导致一组都不显示，点它就能恢复显示第一组。
+    # 它不受任何 Visibility 条件影响，永远可见。
+    reset_events = "".join(
+        '                    <local:CustomEvent Type="修改变量" Data="%s|%s" />\n'
+        % (name, visible_value if index == 0 else hidden_value)
+        for index, name in enumerate(var_names)
+    )
+    reset_button = (
+        '        <local:MyTextButton Margin="0,6,0,0" HorizontalAlignment="Center"\n'
+        '                            Text="看不见内容？点这里恢复" FontSize="11">\n'
+        '            <local:CustomEventService.Events>\n'
+        '                <local:CustomEventCollection>\n'
+        '%s'
+        '                    <local:CustomEvent Type="刷新页面" Data="-" />\n'
+        '                </local:CustomEventCollection>\n'
+        '            </local:CustomEventService.Events>\n'
+        '        </local:MyTextButton>\n'
+        % reset_events
+    )
+
     return (
         '<!-- 由 build_xaml.py 自动生成，生成时间 %s，版本 %s，共 %d 组冷知识 -->\n'
         '<local:MyCard Title="%s" Margin="0,0,0,15">\n'
@@ -249,10 +269,12 @@ def build_xaml(picked, config, version):
         '        <TextBlock TextWrapping="Wrap" Margin="0,4,0,0" FontSize="11"\n'
         '                   Foreground="{DynamicResource ColorBrush3}"\n'
         '                   Text="%s" />\n'
+        '%s'
         '    </StackPanel>\n'
         '</local:MyCard>\n'
         % (datetime.now().strftime("%Y/%m/%d %H:%M"), version, total,
-           xml_escape(config["card_title"]), buttons_xaml, sets_xaml, xml_escape(footer))
+           xml_escape(config["card_title"]), buttons_xaml, sets_xaml,
+           xml_escape(footer), reset_button)
     )
 
 
