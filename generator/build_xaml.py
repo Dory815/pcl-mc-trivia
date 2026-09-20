@@ -21,6 +21,17 @@ r"""把素材渲染成 PCL 能直接用的 Custom.xaml，并生成预览页。
     <输出目录>/Custom.xaml       主页本体
     <输出目录>/Custom.xaml.ini   版本号（PCL 用它判断是否需要重新下载）
     preview/preview.html         浏览器预览（默认生成）
+
+关于页面结构（踩过的坑，改动前请先读）：
+
+  1. MyCard 只会在"第一个子元素"上预留标题栏高度。所以标题栏区域要放
+     一个 Margin="25,40,23,0" 的空 StackPanel 占位，正文必须从这里往下排。
+  2. 四组冷知识放在同一个 Grid 里互相叠放，同一时刻只有一组可见，
+     这样切换时不会互相挤压、也不会和标题重叠。
+  3. Visibility 只接受 Visible / Collapsed，不能用数字。
+  4. 修改变量事件的数据只能写两个参数 "名字|值"。写成 "名字|值|-" 时，
+     PCL 会把第一个 | 之后的所有内容当作值，变量里会多出 "-"，
+     替换进 Visibility 后变成 "Collapsed|-" 导致主页加载失败。
 """
 
 import argparse
@@ -154,16 +165,7 @@ def xml_escape(text):
 
 
 def build_xaml(picked, config, version):
-    """生成主页 XAML。
-
-    picked 里包含 facts_per_page × fact_sets 条冷知识：
-    同一时刻只显示一组，点右上角按钮会在各组之间轮换（靠 PCL 的变量与条件显示实现）。
-    这样即使服务器还没更新，刷新也能看到新内容。
-
-    实现要点：Visibility 只接受 Visible / Collapsed 两个值，不能填数字。
-    所以这里为每个显示位置各用一个布尔变量（第 1 组默认 Visible，其余默认 Collapsed），
-    每次点击把"下一个位置"设为 Visible、当前与其余设为 Collapsed。
-    """
+    """生成主页 XAML。"""
     per_page = config["facts_per_page"]
     sets = []
     for start in range(0, len(picked), per_page):
@@ -174,47 +176,38 @@ def build_xaml(picked, config, version):
         sets = [picked[:per_page]]
 
     total = len(sets)
-    # 轮换状态放在注册表里，变量名带前缀避免和别的主页冲突
     var_names = ["Clip" + str(index + 1) for index in range(total)]
-    visible_value = "Visible"
-    hidden_value = "Collapsed"
 
     def visibility_attr(index):
-        """第 index 组（从 0 开始）的显示条件。"""
-        default = visible_value if index == 0 else hidden_value
+        default = "Visible" if index == 0 else "Collapsed"
         return ' Visibility="{variable:%s:%s}"' % (var_names[index], default)
 
-    def fact_blocks(group, set_index):
-        """一组冷知识（3 条）的 XAML，整组共用一个显示条件。"""
-        inner = []
+    def group_xaml(group, set_index):
+        lines = []
         for index, (title, fact, url) in enumerate(group, start=1):
             source_line = "来源：%s（%s）" % (title, url)
-            inner.append(
-                '                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"\n'
-                '                           Text="%s. %s" />\n'
-                '                <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"\n'
-                '                           Text="%s" />\n'
-                '                <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"\n'
-                '                           Foreground="{DynamicResource ColorBrush2}"\n'
-                '                           Text="%s" />\n'
+            lines.append(
+                '                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"\n'
+                '                                   Text="%s. %s" />\n'
+                '                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"\n'
+                '                                   Text="%s" />\n'
+                '                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"\n'
+                '                                   Foreground="{DynamicResource ColorBrush2}"\n'
+                '                                   Text="%s" />\n'
                 % (index, xml_escape(title), xml_escape(fact), xml_escape(source_line))
             )
-        return ('            <StackPanel%s>\n%s            </StackPanel>\n'
-                % (visibility_attr(set_index), "".join(inner)))
+        return ('                    <StackPanel%s>\n%s                    </StackPanel>\n'
+                % (visibility_attr(set_index), "".join(lines)))
 
-    def rotate_button(set_index):
-        """第 set_index 组对应的换一批按钮：把显示位置切到下一轮。"""
+    def button_xaml(set_index):
         next_index = (set_index + 1) % total + 1
         events = []
         for index, name in enumerate(var_names, start=1):
-            value = visible_value if index == next_index else hidden_value
-            # 这里只能用两个参数："名字|值"。
-            # PCL 解析事件数据时，取的是"第一个 | 之后的所有内容"当作值，
-            # 所以写成 "名字|值|-" 会把 "-" 一起写进变量，
-            # 之后替换进 Visibility 就变成 "Collapsed|-" 这种非法值，主页会加载失败。
-            events.append('                    <local:CustomEvent Type="修改变量" Data="%s|%s" />\n'
+            value = "Visible" if index == next_index else "Collapsed"
+            # 只能写两个参数，多写 |- 会让变量值变成 "Collapsed|-"
+            events.append('                        <local:CustomEvent Type="修改变量" Data="%s|%s" />\n'
                           % (name, value))
-        events.append('                    <local:CustomEvent Type="刷新页面" Data="-" />\n')
+        events.append('                        <local:CustomEvent Type="刷新页面" Data="-" />\n')
         return (
             '        <local:MyIconButton Height="22" Width="22" Margin="9"\n'
             '                           VerticalAlignment="Top" HorizontalAlignment="Right"%s\n'
@@ -229,94 +222,51 @@ def build_xaml(picked, config, version):
             % (visibility_attr(set_index), REFRESH_LOGO, "".join(events))
         )
 
-    sets_xaml = "".join(fact_blocks(group, index) for index, group in enumerate(sets))
-    buttons_xaml = "".join(rotate_button(index) for index in range(total))
+    groups_xaml = "".join(group_xaml(group, index) for index, group in enumerate(sets))
+    buttons_xaml = "".join(button_xaml(index) for index in range(total))
 
     footer = config["footer"]
     note = config.get("source_note")
     if note:
         footer = "%s\n%s" % (footer, note)
 
-    # 救急按钮：万一变量被写坏导致一组都不显示，点它就能恢复显示第一组。
-    # 它不受任何 Visibility 条件影响，永远可见。
+    # 救急按钮：万一变量被写坏导致一组都不显示，点它就能恢复第一组
     reset_events = "".join(
-        '                    <local:CustomEvent Type="修改变量" Data="%s|%s" />\n'
-        % (name, visible_value if index == 0 else hidden_value)
+        '                            <local:CustomEvent Type="修改变量" Data="%s|%s" />\n'
+        % (name, "Visible" if index == 0 else "Collapsed")
         for index, name in enumerate(var_names)
     )
     reset_button = (
-        '        <local:MyTextButton Margin="0,6,0,0" HorizontalAlignment="Center"\n'
-        '                            Text="看不见内容？点这里恢复" FontSize="11">\n'
-        '            <local:CustomEventService.Events>\n'
-        '                <local:CustomEventCollection>\n'
+        '            <local:MyTextButton Margin="0,4,0,0" HorizontalAlignment="Center" FontSize="11"\n'
+        '                                Text="看不见内容？点这里恢复">\n'
+        '                <local:CustomEventService.Events>\n'
+        '                    <local:CustomEventCollection>\n'
         '%s'
-        '                    <local:CustomEvent Type="刷新页面" Data="-" />\n'
-        '                </local:CustomEventCollection>\n'
-        '            </local:CustomEventService.Events>\n'
-        '        </local:MyTextButton>\n'
+        '                        <local:CustomEvent Type="刷新页面" Data="-" />\n'
+        '                    </local:CustomEventCollection>\n'
+        '                </local:CustomEventService.Events>\n'
+        '            </local:MyTextButton>\n'
         % reset_events
     )
 
     return (
         '<!-- 由 build_xaml.py 自动生成，生成时间 %s，版本 %s，共 %d 组冷知识 -->\n'
         '<local:MyCard Title="%s" Margin="0,0,0,15">\n'
-        '    <TextBlock Margin="25,40,23,0" TextWrapping="Wrap" FontSize="11"\n'
-        '               Foreground="{DynamicResource ColorBrush3}"\n'
-        '               Text="点右上角按钮可以换一批" />\n'
+        # 标题栏区域（40 像素）只放换一批按钮，不占正文位置
         '%s'
-        '    <StackPanel Margin="25,6,23,15">\n'
+        '    <StackPanel Margin="25,40,23,15">\n'
+        '        <Grid>\n'
         '%s'
-        '        <TextBlock TextWrapping="Wrap" Margin="0,4,0,0" FontSize="11"\n'
+        '        </Grid>\n'
+        '%s'
+        '        <TextBlock TextWrapping="Wrap" Margin="0,6,0,0" FontSize="11"\n'
         '                   Foreground="{DynamicResource ColorBrush3}"\n'
         '                   Text="%s" />\n'
-        '%s'
         '    </StackPanel>\n'
         '</local:MyCard>\n'
         % (datetime.now().strftime("%Y/%m/%d %H:%M"), version, total,
-           xml_escape(config["card_title"]), buttons_xaml, sets_xaml,
-           xml_escape(footer), reset_button)
-    )
-
-
-def build_xaml_simple(picked, config, version):
-    """（保留）不带轮换、直接把所有条目铺开的版本，供单组场景使用。"""
-    facts_xaml = []
-    for index, (title, fact, url) in enumerate(picked, start=1):
-        source_line = "来源：%s（%s）" % (title, url)
-        facts_xaml.append(
-            '        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"\n'
-            '                   Text="%s. %s" />\n'
-            '        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"\n'
-            '                   Text="%s" />\n'
-            '        <TextBlock TextWrapping="Wrap" Margin="0,0,0,14" FontSize="11"\n'
-            '                   Foreground="{DynamicResource ColorBrush2}"\n'
-            '                   Text="%s" />\n'
-            % (index, xml_escape(title), xml_escape(fact), xml_escape(source_line))
-        )
-    body = "\n".join(facts_xaml)
-
-    footer = config["footer"]
-    note = config.get("source_note")
-    if note:
-        footer = "%s\n%s" % (footer, note)
-
-    return (
-        '<!-- 由 build_xaml.py 自动生成，生成时间 %s，版本 %s -->\n'
-        '<local:MyCard Title="%s" Margin="0,0,0,15">\n'
-        '    <StackPanel Margin="25,40,23,15">\n'
-        '        <local:MyIconButton Height="22" Width="22" Margin="9"\n'
-        '                           VerticalAlignment="Top" HorizontalAlignment="Right"\n'
-        '                           EventType="刷新主页" EventData="/"\n'
-        '                           ToolTip="换一批冷知识"\n'
-        '                           Logo="%s" />\n'
-        '%s'
-        '        <TextBlock TextWrapping="Wrap" Margin="0,4,0,0" FontSize="11"\n'
-        '                   Foreground="{DynamicResource ColorBrush3}"\n'
-        '                   Text="%s" />\n'
-        '    </StackPanel>\n'
-        '</local:MyCard>\n'
-        % (datetime.now().strftime("%Y/%m/%d %H:%M"), version,
-           xml_escape(config["card_title"]), REFRESH_LOGO, body, xml_escape(footer))
+           xml_escape(config["card_title"]), buttons_xaml, groups_xaml,
+           reset_button, xml_escape(footer))
     )
 
 
@@ -329,7 +279,7 @@ def build_preview(picked, config, version, entries):
 
     payload = json.dumps(pool, ensure_ascii=False)
     blocks = []
-    for index, (title, fact, url) in enumerate(picked, start=1):
+    for index, (title, fact, url) in enumerate(picked[:config["facts_per_page"]], start=1):
         source_text = "来源：%s（%s）" % (title, url)
         blocks.append(
             '        <div class="fact">\n'
@@ -372,8 +322,7 @@ def build_preview(picked, config, version, entries):
 </head>
 <body>
 <div class="wrap">
-  <p class="tip">这是 PCL 主页的浏览器预览（版本 %(version)s）。点右上角按钮可换一批，效果与 PCL 里点「刷新主页」一致。</p>
-%(subscribe)s
+  <p class="tip">这是浏览器预览（版本 %(version)s）。PCL 里点右上角按钮会在 4 组之间轮换。</p>
   <div class="card">
     <div class="card-head">
       <h1>%(card_title)s</h1>
@@ -411,7 +360,6 @@ function reroll() {
         "footer": html.escape(footer_text(config)),
         "pool": payload,
         "count": config["facts_per_page"],
-        "subscribe": subscribe_html(config),
     }
 
 
@@ -421,31 +369,6 @@ def footer_text(config):
     if note:
         footer = "%s\n%s" % (footer, note)
     return footer
-
-
-def subscribe_lines(config):
-    """根据 config 里的 publish 信息，算出订阅者该填的网址。"""
-    pub = config.get("publish") or {}
-    owner, name = pub.get("repo_owner", ""), pub.get("repo_name", "")
-    if not owner or not name:
-        return None
-    path = pub.get("path", "publish/Custom.xaml")
-    branch = pub.get("branch", "main")
-    raw = "https://raw.githubusercontent.com/%s/%s/%s/%s" % (owner, name, branch, path)
-    proxy = (pub.get("proxy_prefix") or "") + raw
-    return raw, proxy
-
-
-def subscribe_html(config):
-    lines = subscribe_lines(config)
-    if not lines:
-        return ""
-    raw, proxy = lines
-    return (
-        '  <p class="tip">给别人的订阅地址（PCL 里选「联网下载」填其中一条）：<br>\n'
-        '    直连：%s<br>\n'
-        '    镜像：%s</p>\n' % (html.escape(raw), html.escape(proxy))
-    )
 
 
 def main():
@@ -487,7 +410,7 @@ def main():
     if not args.no_preview:
         log("  %s" % PREVIEW_FILE)
     log("")
-    log("本次抽到 %d 组、共 %d 条（点主页按钮可在这些组之间轮换）：" % (set_count, len(picked)))
+    log("本次抽到 %d 组、共 %d 条：" % (set_count, len(picked)))
     for set_index in range(set_count):
         group = picked[set_index * per_page:(set_index + 1) * per_page]
         log("  【第 %d 组】" % (set_index + 1))
