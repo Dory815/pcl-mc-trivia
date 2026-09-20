@@ -47,10 +47,36 @@ POOL_PAGE_SIZE = 100     # 搜索接口单次返回条数
 MAX_POOL = 1200
 MAX_ATTEMPTS_FACTOR = 6  # 最多抽查 目标条目数 x 该系数 个条目
 
+# 可选：先用 classify_pool.py 生成这份"只要物品/方块/生物"的白名单，
+# 存在的话就优先按它来抽，省去每次现场分类的开销。
+POOL_CONTENT_FILE = DATA_DIR / "pool_content.json"
+
 EXCLUDE_TITLE_SUBSTRINGS = ("/", "User:", "用户:", "Template:", "模板:")
 
+# 版本页与更新公告页：普通玩家不感兴趣，过滤掉
+# （只保留物品 / 生物 / 方块 / 机制这类真正的内容条目）
+import re as _re
+EXCLUDE_TITLE_PATTERNS = (
+    # 各种版本页：Java版1.13、基岩版1.20.0、携带版0.15.10……
+    _re.compile(r"^(Java版|基岩版|携带版|教育版|原主机版|树莓派版|中国版|Xbox|PlayStation|Nintendo|New Nintendo)"),
+    _re.compile(r"^\d+(\.\d+)+"),                 # 1.50、1.12
+    _re.compile(r"^(Alpha|Beta|Classic|Indev|Infdev|pre-Classic|Pre-Classic)"),
+    _re.compile(r"^\d+w\d+"),                     # 13w25a 这类快照号
+    # 更新公告页
+    _re.compile(r"(更新|发布|快照|预发布|实验性)"),
+)
+
+
+def is_content_title(title):
+    """只要物品、生物、方块这类内容条目。"""
+    if any(bad in title for bad in EXCLUDE_TITLE_SUBSTRINGS):
+        return False
+    if any(pattern.search(title) for pattern in EXCLUDE_TITLE_PATTERNS):
+        return False
+    return True
+
 MIN_LEN = 15
-MAX_LEN = 180
+MAX_LEN = 200
 BAD_CHARS = ("<", ">", "{{", "}}", "[[", "]]", "|", "\n")
 BAD_PREFIX = ("*", "#", "•", "：", ":")
 EDITOR_NOTES = ("本条目", "本页面", "本模板")
@@ -95,6 +121,14 @@ def api(params, delay=REQUEST_DELAY):
 # ---------------------------------------------------------------- 候选池
 
 def build_pool(force=False):
+    # 如果已经用 classify_pool.py 建好了"只要物品/方块/生物"的白名单，直接用它
+    if POOL_CONTENT_FILE.exists() and not force:
+        content = load_json(POOL_CONTENT_FILE, {})
+        if content.get("titles"):
+            log("使用分类白名单：%s 个物品/方块/生物条目（%s）"
+                % (len(content["titles"]), POOL_CONTENT_FILE.name))
+            return content["titles"]
+
     if POOL_FILE.exists() and not force:
         pool = load_json(POOL_FILE, {})
         if pool.get("titles"):
@@ -122,8 +156,9 @@ def build_pool(force=False):
             break
         offset = data["continue"]["sroffset"]
 
-    titles = [t for t in dict.fromkeys(titles)
-              if not any(bad in t for bad in EXCLUDE_TITLE_SUBSTRINGS)]
+    before = len(set(titles))
+    titles = [t for t in dict.fromkeys(titles) if is_content_title(t)]
+    log("  过滤版本页与更新公告页：%s → %s 个内容条目" % (before, len(titles)))
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     with POOL_FILE.open("w", encoding="utf-8") as f:
         json.dump({"built_at": time.strftime("%Y-%m-%d %H:%M:%S"), "titles": titles},
