@@ -57,11 +57,13 @@ jobs:
             git commit -m "chore(publish): 更新冷知识主页"
             # 同一时间可能有别的运行也在提交，推之前先同步并重试几次
             for attempt in 1 2 3 4 5; do
+              git rebase --abort 2>/dev/null || true
               if git pull --rebase --autostash --quiet && git push; then
                 echo "已提交并推送（第 $attempt 次尝试）"
                 break
               fi
               echo "第 $attempt 次推送失败，等待后重试"
+              git rebase --abort 2>/dev/null || true
               sleep 5
               if [ "$attempt" = "5" ]; then
                 echo "多次推送失败"
