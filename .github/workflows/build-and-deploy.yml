@@ -10,6 +10,8 @@ on:
     - cron: "0 * * * *"
   workflow_dispatch:
   push:
+    branches:
+      - main
     # 自己改了脚本、配置、素材后推上来，也顺手重新生成一次
     paths:
       - "generator/**"
@@ -53,7 +55,19 @@ jobs:
             echo "内容没有变化，跳过提交"
           else
             git commit -m "chore(publish): 更新冷知识主页"
-            git push
+            # 同一时间可能有别的运行也在提交，推之前先同步并重试几次
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase --autostash --quiet && git push; then
+                echo "已提交并推送（第 $attempt 次尝试）"
+                break
+              fi
+              echo "第 $attempt 次推送失败，等待后重试"
+              sleep 5
+              if [ "$attempt" = "5" ]; then
+                echo "多次推送失败"
+                exit 1
+              fi
+            done
           fi
 
       - name: 移动 latest 标签（让 jsDelivr 这类 CDN 立即拿到新内容）
