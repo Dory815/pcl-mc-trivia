@@ -109,19 +109,22 @@ https://你的地址/Custom.xaml?t={time}
 别人的用法（PCL 设置 → 个性化 → 主页 → 联网下载，填任意一条）：
 
 ```
-① 镜像（国内推荐）
-https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
-
-② GitHub Pages（官方线路）
+① GitHub Pages（推荐：实测最快）
 https://dory815.github.io/pcl-mc-trivia/Custom.xaml
 
-③ 备用镜像
+② 备用镜像（GitHub Pages 不通时用）
+https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
+
+③ 备用镜像二
 https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
 ```
 
 实测（校园网）：直连 `raw.githubusercontent.com` 会超时；`gh-proxy.com` 与 jsDelivr
-**都会缓存旧版本**（曾导致用户一直看到报错的旧文件），所以改用 ghproxy.net 与 GitHub Pages。
+**都会缓存旧版本**（曾导致一直看到报错的旧文件）。速度对比：GitHub Pages 约 0.5 秒，
+ghproxy.net 约 1.1 秒，所以 Pages 作为首选。
 
 主页一次包含 4 组冷知识，点右上角按钮就在这 4 组之间轮换，**不用等服务器更新**。
+
+**网页预览**：<https://dory815.github.io/pcl-mc-trivia/> —— 不用开 PCL 就能看当前这批内容长什么样。
 
 部署细节、维护方式与踩过的坑见 [github/DEPLOY.md](github/DEPLOY.md)。
