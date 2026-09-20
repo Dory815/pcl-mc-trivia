@@ -157,8 +157,12 @@ def build_xaml(picked, config, version):
     """生成主页 XAML。
 
     picked 里包含 facts_per_page × fact_sets 条冷知识：
-    同一时刻只显示一组，点右上角按钮会在各组之间轮换（靠 PCL 的变量与条件显示实现），
+    同一时刻只显示一组，点右上角按钮会在各组之间轮换（靠 PCL 的变量与条件显示实现）。
     这样即使服务器还没更新，刷新也能看到新内容。
+
+    实现要点：Visibility 只接受 Visible / Collapsed 两个值，不能填数字。
+    所以这里为每个显示位置各用一个布尔变量（第 1 组默认 Visible，其余默认 Collapsed），
+    每次点击把"下一个位置"设为 Visible、当前与其余设为 Collapsed。
     """
     per_page = config["facts_per_page"]
     sets = []
@@ -170,12 +174,18 @@ def build_xaml(picked, config, version):
         sets = [picked[:per_page]]
 
     total = len(sets)
+    # 轮换状态放在注册表里，变量名带前缀避免和别的主页冲突
+    var_names = ["Clip" + str(index + 1) for index in range(total)]
+    visible_value = "Visible"
+    hidden_value = "Collapsed"
+
+    def visibility_attr(index):
+        """第 index 组（从 0 开始）的显示条件。"""
+        default = visible_value if index == 0 else hidden_value
+        return ' Visibility="{variable:%s:%s}"' % (var_names[index], default)
 
     def fact_blocks(group, set_index):
         """一组冷知识（3 条）的 XAML，整组共用一个显示条件。"""
-        is_first = set_index == 0
-        visibility = ("" if is_first
-                      else ' Visibility="{variable:Rotation:%d}"' % (set_index + 1))
         inner = []
         for index, (title, fact, url) in enumerate(group, start=1):
             source_line = "来源：%s（%s）" % (title, url)
@@ -190,13 +200,17 @@ def build_xaml(picked, config, version):
                 % (index, xml_escape(title), xml_escape(fact), xml_escape(source_line))
             )
         return ('            <StackPanel%s>\n%s            </StackPanel>\n'
-                % (visibility, "".join(inner)))
+                % (visibility_attr(set_index), "".join(inner)))
 
     def rotate_button(set_index):
-        """第 set_index 组对应的换一批按钮：把自己这一轮换成下一轮。"""
+        """第 set_index 组对应的换一批按钮：把显示位置切到下一轮。"""
         next_index = (set_index + 1) % total + 1
-        visibility = ("" if set_index == 0
-                      else ' Visibility="{variable:Rotation:%d}"' % (set_index + 1))
+        events = []
+        for index, name in enumerate(var_names, start=1):
+            value = visible_value if index == next_index else hidden_value
+            events.append('                    <local:CustomEvent Type="修改变量" Data="%s|%s|-" />\n'
+                          % (name, value))
+        events.append('                    <local:CustomEvent Type="刷新页面" Data="-" />\n')
         return (
             '        <local:MyIconButton Height="22" Width="22" Margin="9"\n'
             '                           VerticalAlignment="Top" HorizontalAlignment="Right"%s\n'
@@ -204,12 +218,11 @@ def build_xaml(picked, config, version):
             '                           Logo="%s">\n'
             '            <local:CustomEventService.Events>\n'
             '                <local:CustomEventCollection>\n'
-            '                    <local:CustomEvent Type="修改变量" Data="Rotation|%d|-" />\n'
-            '                    <local:CustomEvent Type="刷新页面" Data="-" />\n'
+            '%s'
             '                </local:CustomEventCollection>\n'
             '            </local:CustomEventService.Events>\n'
             '        </local:MyIconButton>\n'
-            % (visibility, REFRESH_LOGO, next_index)
+            % (visibility_attr(set_index), REFRESH_LOGO, "".join(events))
         )
 
     sets_xaml = "".join(fact_blocks(group, index) for index, group in enumerate(sets))
