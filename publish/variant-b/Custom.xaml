@@ -1,7 +1,7 @@
-<!-- 由 build_xaml.py 自动生成，生成时间 2026/09/20 12:09，版本 20260920120933，共 12 组冷知识，起始第 1 组 -->
+<!-- 由 build_xaml.py 自动生成，生成时间 2026/09/20 12:09，版本 20260920120933，共 12 组冷知识，起始第 4 组 b -->
 <local:MyCard Title="MC 冷知识" Margin="0,0,0,15">
         <local:MyIconButton Height="22" Width="22" Margin="9"
-                           VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Clip1:Visible}"
+                           VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Clip1:Collapsed}"
                            ToolTip="换一批冷知识"
                            Logo="M512.0 838.3c-80.2 0-153.4-29.3-210.2-77.4l75.5-75.5c11.5-11.5 25.8-22.0 25.8-37.0a27.2 27.2 0 0 0-27.1-27.1H104.0c-27.1 0-27.1 23.9-27.1 27.1v271.9a27.1 27.1 0 0 0 27.1 27.1c15.0 0 27.8-16.6 42.5-31.2l77.9-77.9c76.6 67.7 177.1 108.9 287.4 108.9 221.7 0 404.5-166.0 431.2-380.6h-109.8c-25.9 154.2-159.7 271.9-321.3 271.9zM919.9 76.6c-15.0 0-27.8 16.6-42.5 31.3L799.5 185.8c-76.5-67.7-177.1-108.9-287.4-108.9-221.8 0-404.5 166.1-431.3 380.6H190.6c25.9-154.2 159.7-271.9 321.4-271.9 80.2 0 153.4 29.3 210.1 77.4l-75.5 75.5c-11.6 11.5-25.8 22.0-25.8 37.1a27.2 27.2 0 0 0 27.1 27.1h271.9c27.1 0 27.1-23.9 27.1-27.1V103.8a27.1 27.1 0 0 0-27.1-27.1z">
             <local:CustomEventService.Events>
@@ -67,7 +67,7 @@
             </local:CustomEventService.Events>
         </local:MyIconButton>
         <local:MyIconButton Height="22" Width="22" Margin="9"
-                           VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Clip4:Collapsed}"
+                           VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Clip4:Visible}"
                            ToolTip="换一批冷知识"
                            Logo="M512.0 838.3c-80.2 0-153.4-29.3-210.2-77.4l75.5-75.5c11.5-11.5 25.8-22.0 25.8-37.0a27.2 27.2 0 0 0-27.1-27.1H104.0c-27.1 0-27.1 23.9-27.1 27.1v271.9a27.1 27.1 0 0 0 27.1 27.1c15.0 0 27.8-16.6 42.5-31.2l77.9-77.9c76.6 67.7 177.1 108.9 287.4 108.9 221.7 0 404.5-166.0 431.2-380.6h-109.8c-25.9 154.2-159.7 271.9-321.3 271.9zM919.9 76.6c-15.0 0-27.8 16.6-42.5 31.3L799.5 185.8c-76.5-67.7-177.1-108.9-287.4-108.9-221.8 0-404.5 166.1-431.3 380.6H190.6c25.9-154.2 159.7-271.9 321.4-271.9 80.2 0 153.4 29.3 210.1 77.4l-75.5 75.5c-11.6 11.5-25.8 22.0-25.8 37.1a27.2 27.2 0 0 0 27.1 27.1h271.9c27.1 0 27.1-23.9 27.1-27.1V103.8a27.1 27.1 0 0 0-27.1-27.1z">
             <local:CustomEventService.Events>
@@ -266,37 +266,60 @@
         </local:MyIconButton>
     <StackPanel Margin="25,40,23,15">
         <Grid>
-                    <StackPanel Visibility="{variable:Clip1:Visible}">
+                    <StackPanel Visibility="{variable:Clip1:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 树莓派版" />
+                                   Text="1. 栅栏" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="玩家名称总是“StevePi”。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：树莓派版（https://zh.minecraft.wiki/w/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%89%88）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 成就" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="“so-i-got-that-going-for-me”（so-i-got-that-going-for-me）的英文出自电影《疯狂高尔夫》。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：成就（https://zh.minecraft.wiki/w/%E6%88%90%E5%B0%B1）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 栅栏" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="玩家可以用台阶放在栅栏旁边跳过栅栏，而大多数一格高的生物不能跳过。" />
+                                   Text="与其他栅栏不同，竹栅栏的模型使用单独的纹理，而不是使用对应的木板纹理。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
                                    Text="来源：栅栏（https://zh.minecraft.wiki/w/%E6%A0%85%E6%A0%8F）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 黏液块" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="被活塞上的黏液块向上弹出的实体将上升略大于6.4个方块，其中包括活塞的上升距离。被横向弹出的实体将在弹射方向上移动3.510个方块。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：黏液块（https://zh.minecraft.wiki/w/%E9%BB%8F%E6%B6%B2%E5%9D%97）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 潮涌核心" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="当潮涌核心激活时，其模型中心会显示类似海洋之心的纹理，对应了潮涌核心的合成材料。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：潮涌核心（https://zh.minecraft.wiki/w/%E6%BD%AE%E6%B6%8C%E6%A0%B8%E5%BF%83）" />
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip2:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 黑曜石" />
+                                   Text="1. 蜜蜂" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="尽管在游戏中黑曜石属于较难被破坏的方块，但在现实中，黑曜石为玻璃状结构，易碎。" />
+                                   Text="蜜蜂攻击生物后失去螫针后会死亡的设定参考自现实，在现实中蜜蜂的工蜂的螫针连接着其内脏，完成蜇刺后会将螫针带着内脏一起拔出。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：黑曜石（https://zh.minecraft.wiki/w/%E9%BB%91%E6%9B%9C%E7%9F%B3）" />
+                                   Text="来源：蜜蜂（https://zh.minecraft.wiki/w/%E8%9C%9C%E8%9C%82）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 凋灵" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="在Java版的愚人节玩笑版本3D Shareware v1.34中，凋灵会掉落红色钥匙。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：凋灵（https://zh.minecraft.wiki/w/%E5%87%8B%E7%81%B5）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 经验" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="在Java版Alpha v1.0.10至Java版Beta 1.9-pre2，分数会被显示为&amp;e0。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：经验（https://zh.minecraft.wiki/w/%E7%BB%8F%E9%AA%8C）" />
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip3:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 钻石矿石" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="洞穴与山崖更改了大部分主世界矿石的纹理，只有钻石矿石被保留了原本的“矿粒”形状。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：钻石矿石（https://zh.minecraft.wiki/w/%E9%92%BB%E7%9F%B3%E7%9F%BF%E7%9F%B3）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
                                    Text="2. Java版14w02c" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
@@ -305,252 +328,229 @@
                                    Foreground="{DynamicResource ColorBrush2}"
                                    Text="来源：Java版14w02c（https://zh.minecraft.wiki/w/Java%E7%89%8814w02c）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 凋灵" />
+                                   Text="3. 猫" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="该名字是“Summon”（召唤）的谐音双关，因为凋灵是由玩家召唤生成的。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：凋灵（https://zh.minecraft.wiki/w/%E5%87%8B%E7%81%B5）" />
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip3:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 成书" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="如果通过命令获得一个没有的成书，那么成书则不会有作者和副本信息，且无法打开。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：成书（https://zh.minecraft.wiki/w/%E6%88%90%E4%B9%A6）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 携带版0.15.10" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="这些推文在0.15.10推送到各个设备上的几天前被发送（除了有关复活的玫瑰的推文），作为“戏弄者”的一种形式，从9月30日到10月4日。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：携带版0.15.10（https://zh.minecraft.wiki/w/%E6%90%BA%E5%B8%A6%E7%89%880.15.10）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 哞菇" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="存在着一种身上长着毛茛的变种哞菇，名为“哞花”。在Minecraft Live 2020的生物投票中，哞花在第一轮中以28.3%的得票率被淘汰。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：哞菇（https://zh.minecraft.wiki/w/%E5%93%9E%E8%8F%87）" />
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip4:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 市场" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="在市场加入Minecraft前，游戏内的纹理包和皮肤需要使用真实货币来购买，因此Mojang加入任何内容前都必须经过每个平台的认证。加入市场和Minecoin便是为了避免此事发生。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：市场（https://zh.minecraft.wiki/w/%E5%B8%82%E5%9C%BA）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. Herobrine" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="“Remove Herobrine”（移除Herobrine）是Java版3D Shareware v1.34愚人节版本中的一个章节。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Herobrine（https://zh.minecraft.wiki/w/Herobrine）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. Jason Major" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="Root beer是他最喜欢的饮料之一，他的桌子上经常有一瓶。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Jason Major（https://zh.minecraft.wiki/w/Jason_Major）" />
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip5:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. Eld Unknown" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="曲名“Eld Unknown”中的“Eld”可能是英语单词“old”（古老的）的古语形式。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Eld Unknown（https://zh.minecraft.wiki/w/Eld_Unknown）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 蜜蜂" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="蜜蜂攻击生物后失去螫针后会死亡的设定参考自现实，在现实中蜜蜂的工蜂的螫针连接着其内脏，完成蜇刺后会将螫针带着内脏一起拔出。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：蜜蜂（https://zh.minecraft.wiki/w/%E8%9C%9C%E8%9C%82）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 蜘蛛" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="蜘蛛其实是浮在地面上的，尽管看起来并不明显。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：蜘蛛（https://zh.minecraft.wiki/w/%E8%9C%98%E8%9B%9B）" />
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip6:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 猫" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="在游戏中可以让两只花猫繁殖，但在现实生活中是行不通的。这是因为绝大部分三花猫都是母猫，而此类极少数的公猫却不具备生育能力。" />
+                                   Text="西服猫是基于Jeb的宠物，母猫“牛顿”（Newton）设计的。它已于2014年去世。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
                                    Text="来源：猫（https://zh.minecraft.wiki/w/%E7%8C%AB）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 降雨" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="雨在云层上也会存在。Notch的解释是云层之上的灰色区域才是雨真正的来源。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：降雨（https://zh.minecraft.wiki/w/%E9%99%8D%E9%9B%A8）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 物品栏" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="如果在玩家乘船、骑猪或乘坐矿车等时打开物品栏，玩家模型会显示为坐下的状态。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：物品栏（https://zh.minecraft.wiki/w/%E7%89%A9%E5%93%81%E6%A0%8F）" />
                     </StackPanel>
-                    <StackPanel Visibility="{variable:Clip7:Collapsed}">
+                    <StackPanel Visibility="{variable:Clip4:Visible}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. Mojang办公室披风" />
+                                   Text="1. Java版Classic 0.29 01" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="在有关这一版本的推文中，Notch称“现在可以穿过玩家来放置方块了。”然而，这一特性并不能正常运作。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：Java版Classic 0.29 01（https://zh.minecraft.wiki/w/Java%E7%89%88Classic_0.29_01）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 下界传送门" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="乐高Minecraft系列“The Nether”内包含了一个乐高下界传送门。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：下界传送门（https://zh.minecraft.wiki/w/%E4%B8%8B%E7%95%8C%E4%BC%A0%E9%80%81%E9%97%A8）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 栅栏门" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="手动打开栅栏门时，若水平面上玩家视角方向与栅栏门原先开启方向的夹角大于135°，门板的开启方向会反转。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：栅栏门（https://zh.minecraft.wiki/w/%E6%A0%85%E6%A0%8F%E9%97%A8）" />
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip5:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 呼吸" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="一部分生物在水中氧气值不会下降，但不免疫溺水伤害。更改生物的实体数据将氧气值设置为-20可以使通常不会失去氧气值并因此溺水的生物（如铁傀儡）在不能呼吸时受到一次溺水伤害。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：呼吸（https://zh.minecraft.wiki/w/%E5%91%BC%E5%90%B8）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 太阳" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="这是由于游戏在玩家直接暴露在天空下时对太阳有着特殊的渲染方式。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：太阳（https://zh.minecraft.wiki/w/%E5%A4%AA%E9%98%B3）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. Mojang办公室披风" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                                    Text="在怪异Mojang办公室派对活动服务器的一张展示活动奖励的图片中，Mojang办公室披风被称为“眼眸花披风”。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
                                    Text="来源：Mojang办公室披风（https://zh.minecraft.wiki/w/Mojang%E5%8A%9E%E5%85%AC%E5%AE%A4%E6%8A%AB%E9%A3%8E）" />
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip6:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. Java版15w14a" />
+                                   Text="1. 绊线钩" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="怪物现在被称为“住民”（官方更新日志中写为“Monsters Inhabitants”）。" />
+                                   Text="若绊线线路中的一个绊线被破坏后迅速插入一个绊线钩，线路东、北侧绊线钩和所有绊线的状态不会更新。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Java版15w14a（https://zh.minecraft.wiki/w/Java%E7%89%8815w14a）" />
+                                   Text="来源：绊线钩（https://zh.minecraft.wiki/w/%E7%BB%8A%E7%BA%BF%E9%92%A9）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 曲奇" />
+                                   Text="2. 音乐唱片Pigstep" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="由于2个小麦和1个可可豆即可合成8个曲奇，并且曲奇成功增加堆肥层数的概率较小麦和可可豆更高（85%），用小麦和可可豆合成曲奇再进行堆肥所获得的骨粉数是分开堆肥的约3.5倍。" />
+                                   Text="此唱片的名称取自“Piglin”（猪灵）与“dubstep”（回响贝斯）。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：曲奇（https://zh.minecraft.wiki/w/%E6%9B%B2%E5%A5%87）" />
+                                   Text="来源：音乐唱片Pigstep（https://zh.minecraft.wiki/w/%E9%9F%B3%E4%B9%90%E5%94%B1%E7%89%87Pigstep）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. Java版3D Shareware v1.34" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="且原来生成的木桶会被转换成空的木桶（位置与原位置相同）。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：Java版3D Shareware v1.34（https://zh.minecraft.wiki/w/Java%E7%89%883D_Shareware_v1.34）" />
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip7:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 冰" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="大多数实体都可以在冰面上滑行，因此玩家在冰上划船或骑猪时，速度会变得很快。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：冰（https://zh.minecraft.wiki/w/%E5%86%B0）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 树莓派版" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="玩家可以通过编辑来修改玩家皮肤。如果从APT安装，则在，玩家还可以通过编辑 image目录下的其他文件来修改其他纹理。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：树莓派版（https://zh.minecraft.wiki/w/%E6%A0%91%E8%8E%93%E6%B4%BE%E7%89%88）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 蠹虫" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="在现实中，蠹虫是一种可以在建筑物的黑暗地区和海边的木质建筑以及树上找到的无害的外观类似虾的小型无翼昆虫，它们因损害木制品，纸制品和衣物而臭名远扬。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：蠹虫（https://zh.minecraft.wiki/w/%E8%A0%B9%E8%99%AB）" />
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip8:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 乐高Minecraft" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="在中国大陆等地区购买的21151是不带印着兑换码的砖块的，但是仍可以购买美版等获取兑换码。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：乐高Minecraft（https://zh.minecraft.wiki/w/%E4%B9%90%E9%AB%98Minecraft）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 穿刺" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="穿刺魔咒通过命令等方式被施加到三叉戟以外的物品上时，魔咒依然会正常生效。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：穿刺（https://zh.minecraft.wiki/w/%E7%A9%BF%E5%88%BA）" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. Java版1.12-pre4" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="此版本曾经在启动器中移除，但在2018年9月重新加入。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
+                                   Foreground="{DynamicResource ColorBrush2}"
+                                   Text="来源：Java版1.12-pre4（https://zh.minecraft.wiki/w/Java%E7%89%881.12-pre4）" />
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip9:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
                                    Text="1. 末影龙" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="若通过循环执行命令命令，阻止濒死的末影龙接近末地祭坛，末影龙将无法开始死亡动画。" />
+                                   Text="如果在主世界用命令召唤出末影龙，末影龙会飞到坐标X=0, Z=0的水平位置并将围绕X=0, Z=0盘旋，就像在末地里的那样。在主世界放置末地水晶，水晶会正常治疗末影龙，但末影龙不会在水晶周围停留，而是会四处飞。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
                                    Text="来源：末影龙（https://zh.minecraft.wiki/w/%E6%9C%AB%E5%BD%B1%E9%BE%99）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 猪" />
+                                   Text="2. 市场" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="温带猪与现实中的约克郡猪相似。" />
+                                   Text="在市场推出之前购买的内容会显示为“已拥有(P)”而非“已拥有”。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：猪（https://zh.minecraft.wiki/w/%E7%8C%AA）" />
+                                   Text="来源：市场（https://zh.minecraft.wiki/w/%E5%B8%82%E5%9C%BA）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 下界传送门" />
+                                   Text="3. Ryan Holtz" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="下界传送门可以以类似隧道的方式建造并激活。当玩家从下界生成的传送门回到主世界时，玩家将会被传送到传送门隧道的中间部分。" />
+                                   Text="Holtz加入了自定义世界类型，改编自他的Mod Wedge。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：下界传送门（https://zh.minecraft.wiki/w/%E4%B8%8B%E7%95%8C%E4%BC%A0%E9%80%81%E9%97%A8）" />
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip9:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 钻石" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="钻石必须通过宝库战利品才能实现可再生。这是因为可用于制造钻石的钻石块同样依赖宝库战利品实现可再生，而宝库可以被每个玩家打开无限次数，且试炼钥匙和不祥试炼钥匙是可再生资源。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：钻石（https://zh.minecraft.wiki/w/%E9%92%BB%E7%9F%B3）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 经验" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="通过命令命令提升经验值，在不溢出的情况下所得到的最高经验等级为2,147,483,647。这是Java中整型数据类型的最大值（即(2)-1，32位有符号整型变量的最大值），被用于存储经验值数值。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：经验（https://zh.minecraft.wiki/w/%E7%BB%8F%E9%AA%8C）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 史莱姆" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="在史莱姆搜寻附近的玩家进行攻击或决定它们是否消失时，史莱姆不会从碰撞箱外侧边缘开始检查，而是从碰撞箱X轴和Z轴中间的那一点以及Y轴的底部开始检查。这意味着生成的自定义尺寸的巨大史莱姆可能会在玩家右前方，并且完全是被动型生物。如果足够大，这种史莱姆甚至会在其外边缘小于1格时消失。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
-                                   Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：史莱姆（https://zh.minecraft.wiki/w/%E5%8F%B2%E8%8E%B1%E5%A7%86）" />
+                                   Text="来源：Ryan Holtz（https://zh.minecraft.wiki/w/Ryan_Holtz）" />
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip10:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 兔子" />
+                                   Text="1. 游泳" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="尽管兔子会被胡萝卜吸引，但它们并不会被胡萝卜钓竿吸引。" />
+                                   Text="通过在水源或在冰上疾跑来降低天花板高度，可以加速得更快。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：兔子（https://zh.minecraft.wiki/w/%E5%85%94%E5%AD%90）" />
+                                   Text="来源：游泳（https://zh.minecraft.wiki/w/%E6%B8%B8%E6%B3%B3）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. Jasper Boerstra" />
+                                   Text="2. 熊猫" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="Jasper Boerstra的梦想是成为一名昆虫学家，在决定从事游戏开发工作之前，他在一所农业学校学习。" />
+                                   Text="棕色熊猫是大熊猫的真实亚种，被称为秦岭大熊猫。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Jasper Boerstra（https://zh.minecraft.wiki/w/Jasper_Boerstra）" />
+                                   Text="来源：熊猫（https://zh.minecraft.wiki/w/%E7%86%8A%E7%8C%AB）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 环境音效" />
+                                   Text="3. 猪" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="Minecraft Dungeons中复仇末影之心在Boss战前爬行时使用了“Cave 1”Cave.cave1.wav“Cave 2”Cave.cave2.wav和“Cave 19”Cave.cave19.wav洞穴环境音效。" />
+                                   Text="矿车无论被乘坐与否，必须在撞到方块后才会停下。其他实体和未激活的动力铁轨只会将其减小到最低速度。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：环境音效（https://zh.minecraft.wiki/w/%E7%8E%AF%E5%A2%83%E9%9F%B3%E6%95%88）" />
+                                   Text="来源：猪（https://zh.minecraft.wiki/w/%E7%8C%AA）" />
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip11:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 恶魂" />
+                                   Text="1. 基岩" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="在极少数情况下，生成的恶魂可以看穿方块攻击玩家（这些情况大多数在密闭空间里发生）。" />
+                                   Text="基岩的生成方式使其常常将一部分方块完全封闭，甚至可以发现被包裹在基岩中的矿石和埋藏的宝藏。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：恶魂（https://zh.minecraft.wiki/w/%E6%81%B6%E9%AD%82）" />
+                                   Text="来源：基岩（https://zh.minecraft.wiki/w/%E5%9F%BA%E5%B2%A9）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 潮涌核心" />
+                                   Text="2. TNT" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="当潮涌核心激活时，其模型中心会显示类似海洋之心的纹理，对应了潮涌核心的合成材料。" />
+                                   Text="“TNT”的全称是2,4,6-三硝基甲苯（Trinitrotoluene）。虽然游戏内TNT的合成配方是火药和沙子，但现实中TNT是由甲苯与浓硫酸和浓硝酸的混合物长时间加热反应得到的。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：潮涌核心（https://zh.minecraft.wiki/w/%E6%BD%AE%E6%B6%8C%E6%A0%B8%E5%BF%83）" />
+                                   Text="来源：TNT（https://zh.minecraft.wiki/w/TNT）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. Java版1.16.1" />
+                                   Text="3. 蜘蛛" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="1.16重新上传的版本曾尝试修复这个版本中所修复的1个漏洞，但未成功，随后（第二天）便发布了这个版本以修复该漏洞。" />
+                                   Text="从旁观模式进入蜘蛛的视角会使屏幕带上偏红的模糊滤镜，并且拥有蜘蛛的六重视觉。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Java版1.16.1（https://zh.minecraft.wiki/w/Java%E7%89%881.16.1）" />
+                                   Text="来源：蜘蛛（https://zh.minecraft.wiki/w/%E8%9C%98%E8%9B%9B）" />
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip12:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. Minecraft Experience披风" />
+                                   Text="1. 烈焰棒" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="这件披风是由Mojang员工Craig Leigh设计的。他的设计灵感来源于蝙蝠侠漫画中的反派角色双面人。" />
+                                   Text="玩家和一些人-{}-形生物手持长条状物品（烈焰棒、旋风棒、木棍、调试棒、骨头、竹子）的方式和手持工具类似。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Minecraft Experience披风（https://zh.minecraft.wiki/w/Minecraft_Experience%E6%8A%AB%E9%A3%8E）" />
+                                   Text="来源：烈焰棒（https://zh.minecraft.wiki/w/%E7%83%88%E7%84%B0%E6%A3%92）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. Java版Beta 1.2 02 (20110517)" />
+                                   Text="2. 史莱姆" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="该版本的协议版本为8，在Beta 1.2_02的基础上未做改动，且与Beta 1.1_01、Beta 1.1、Beta 1.0.2、Beta 1.0_01和Beta 1.0共用同一协议版本。" />
+                                   Text="基岩版史莱姆能够自然生成在发光的黑曜石上，尽管发光的黑曜石已无法通过常规方法放置在世界中。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：Java版Beta 1.2 02 (20110517)（https://zh.minecraft.wiki/w/Java%E7%89%88Beta_1.2_02_%2820110517%29）" />
+                                   Text="来源：史莱姆（https://zh.minecraft.wiki/w/%E5%8F%B2%E8%8E%B1%E5%A7%86）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 骨头" />
+                                   Text="3. Mice on Venus" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="Java版若使用命令命令将骨头放入玩家或一些人形生物的头盔槽，它会横向出现在嘴部，看起来像是把骨头衔着。可在彩蛋了解更多此类彩蛋。" />
+                                   Text="曲名引用自电子音乐组合火星鼠（Mouse on Mars）。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,12" FontSize="11"
                                    Foreground="{DynamicResource ColorBrush2}"
-                                   Text="来源：骨头（https://zh.minecraft.wiki/w/%E9%AA%A8%E5%A4%B4）" />
+                                   Text="来源：Mice on Venus（https://zh.minecraft.wiki/w/Mice_on_Venus）" />
                     </StackPanel>
         </Grid>
             <local:MyTextButton Margin="0,4,0,0" HorizontalAlignment="Center" FontSize="11"
                                 Text="看不见内容？点这里恢复">
                 <local:CustomEventService.Events>
                     <local:CustomEventCollection>
-                            <local:CustomEvent Type="修改变量" Data="Clip1|Visible" />
+                            <local:CustomEvent Type="修改变量" Data="Clip1|Collapsed" />
                             <local:CustomEvent Type="修改变量" Data="Clip2|Collapsed" />
                             <local:CustomEvent Type="修改变量" Data="Clip3|Collapsed" />
-                            <local:CustomEvent Type="修改变量" Data="Clip4|Collapsed" />
+                            <local:CustomEvent Type="修改变量" Data="Clip4|Visible" />
                             <local:CustomEvent Type="修改变量" Data="Clip5|Collapsed" />
                             <local:CustomEvent Type="修改变量" Data="Clip6|Collapsed" />
                             <local:CustomEvent Type="修改变量" Data="Clip7|Collapsed" />
