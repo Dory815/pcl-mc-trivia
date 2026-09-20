@@ -84,6 +84,9 @@ jobs:
 
   deploy:
     needs: build
+    # 即使提交那一步因为并发冲突失败，也要把已经生成好的产物发布出去，
+    # 否则线上会一直停留在上一版（曾经因此让用户看到报错的旧文件）
+    if: always()
     runs-on: ubuntu-latest
     environment:
       name: github-pages
