@@ -208,7 +208,11 @@ def build_xaml(picked, config, version):
         events = []
         for index, name in enumerate(var_names, start=1):
             value = visible_value if index == next_index else hidden_value
-            events.append('                    <local:CustomEvent Type="修改变量" Data="%s|%s|-" />\n'
+            # 这里只能用两个参数："名字|值"。
+            # PCL 解析事件数据时，取的是"第一个 | 之后的所有内容"当作值，
+            # 所以写成 "名字|值|-" 会把 "-" 一起写进变量，
+            # 之后替换进 Visibility 就变成 "Collapsed|-" 这种非法值，主页会加载失败。
+            events.append('                    <local:CustomEvent Type="修改变量" Data="%s|%s" />\n'
                           % (name, value))
         events.append('                    <local:CustomEvent Type="刷新页面" Data="-" />\n')
         return (
