@@ -164,8 +164,13 @@ def xml_escape(text):
                 .replace('"', "&quot;").replace("'", "&apos;"))
 
 
-def build_xaml(picked, config, version):
-    """生成主页 XAML。"""
+def build_xaml(picked, config, version, start_group=None, tag=""):
+    """生成主页 XAML。
+
+    start_group：默认显示第几组（从 1 开始）。发布脚本可以为同一批内容
+    生成多个"起始组不同"的版本，发给不同的人看，这样大家第一眼看到的不一样。
+    tag：版本标识，会写进注释，便于区分自己看的是哪一份。
+    """
     per_page = config["facts_per_page"]
     sets = []
     for start in range(0, len(picked), per_page):
@@ -176,10 +181,14 @@ def build_xaml(picked, config, version):
         sets = [picked[:per_page]]
 
     total = len(sets)
+    if start_group is None:
+        start_group = 1
+    start_group = ((start_group - 1) % total) + 1  # 保证落在 1..total
+    first_index = start_group - 1
     var_names = ["Clip" + str(index + 1) for index in range(total)]
 
     def visibility_attr(index):
-        default = "Visible" if index == 0 else "Collapsed"
+        default = "Visible" if index == first_index else "Collapsed"
         return ' Visibility="{variable:%s:%s}"' % (var_names[index], default)
 
     def group_xaml(group, set_index):
@@ -200,6 +209,7 @@ def build_xaml(picked, config, version):
                 % (visibility_attr(set_index), "".join(lines)))
 
     def button_xaml(set_index):
+        # 每个按钮的显示条件与它对应的组一致，点击后切到下一组
         next_index = (set_index + 1) % total + 1
         events = []
         for index, name in enumerate(var_names, start=1):
@@ -233,7 +243,7 @@ def build_xaml(picked, config, version):
     # 救急按钮：万一变量被写坏导致一组都不显示，点它就能恢复第一组
     reset_events = "".join(
         '                            <local:CustomEvent Type="修改变量" Data="%s|%s" />\n'
-        % (name, "Visible" if index == 0 else "Collapsed")
+        % (name, "Visible" if index == first_index else "Collapsed")
         for index, name in enumerate(var_names)
     )
     reset_button = (
@@ -250,7 +260,7 @@ def build_xaml(picked, config, version):
     )
 
     return (
-        '<!-- 由 build_xaml.py 自动生成，生成时间 %s，版本 %s，共 %d 组冷知识 -->\n'
+        '<!-- 由 build_xaml.py 自动生成，生成时间 %s，版本 %s，共 %d 组冷知识%s -->\n'
         '<local:MyCard Title="%s" Margin="0,0,0,15">\n'
         # 标题栏区域（40 像素）只放换一批按钮，不占正文位置
         '%s'
@@ -265,6 +275,7 @@ def build_xaml(picked, config, version):
         '    </StackPanel>\n'
         '</local:MyCard>\n'
         % (datetime.now().strftime("%Y/%m/%d %H:%M"), version, total,
+           ("，起始第 %d 组 %s" % (start_group, tag)).rstrip(),
            xml_escape(config["card_title"]), buttons_xaml, groups_xaml,
            reset_button, xml_escape(footer))
     )
@@ -380,6 +391,9 @@ def main():
     parser.add_argument("--update-source", action="store_true", help="抽取前先更新素材")
     parser.add_argument("--source-target", type=int, default=3, help="更新素材时新增条目数")
     parser.add_argument("--no-preview", action="store_true", help="不生成预览页")
+    parser.add_argument("--start-group", type=int, default=1,
+                        help="默认显示第几组（1 开始）；同一批内容可以生成多份，发给不同的人")
+    parser.add_argument("--tag", default="", help="版本标识，写进文件注释便于区分")
     args = parser.parse_args()
 
     started = time.time()
@@ -394,7 +408,8 @@ def main():
     picked = pick_facts(entries, per_page * set_count, config["min_len"], config["max_len"], rng)
     version = args.version or (datetime.now(timezone(timedelta(hours=8))).strftime("%Y%m%d%H%M%S"))
 
-    xaml = build_xaml(picked, config, version)
+    xaml = build_xaml(picked, config, version,
+                      start_group=args.start_group, tag=args.tag)
     out_dir = args.out if args.out.is_absolute() else PROJECT_ROOT / args.out
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "Custom.xaml").write_text(xaml, encoding="utf-8")
