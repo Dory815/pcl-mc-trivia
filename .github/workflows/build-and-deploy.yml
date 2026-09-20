@@ -1,0 +1,73 @@
+# 每小时自动换一批冷知识，并把结果发布到 GitHub Pages。
+# 也可以在仓库的 Actions 页面手动点 "Run workflow" 触发一次。
+name: 更新冷知识主页
+
+on:
+  schedule:
+    # GitHub 用 UTC 时间。这里表示每小时的第 0 分钟。
+    # 每 6 小时一次：0 */6 * * *
+    # 每天一次（北京时间早 8 点）：0 0 * * *  （UTC 0 点 = 北京 8 点）
+    - cron: "0 * * * *"
+  workflow_dispatch:
+  push:
+    # 自己改了脚本、配置、素材后推上来，也顺手重新生成一次
+    paths:
+      - "generator/**"
+      - "data/facts.json"
+      - ".github/workflows/build-and-deploy.yml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "mc-trivia"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 抽取冷知识并生成主页文件
+        run: |
+          python generator/build_xaml.py --out publish --update-source --source-target 3 --version "$(date -u +%Y%m%d%H%M%S)"
+
+      - name: 校验生成结果
+        run: python generator/check_output.py publish/Custom.xaml
+
+      - name: 把新内容提交回仓库
+        run: |
+          git config user.name "mc-trivia-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add publish data/facts.json
+          if git diff --cached --quiet; then
+            echo "内容没有变化，跳过提交"
+          else
+            git commit -m "chore(publish): 更新冷知识主页"
+            git push
+          fi
+
+      - name: 打包成 Pages 产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: publish
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
