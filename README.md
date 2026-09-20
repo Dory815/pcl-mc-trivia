@@ -109,18 +109,18 @@ https://你的地址/Custom.xaml?t={time}
 别人的用法（PCL 设置 → 个性化 → 主页 → 联网下载，填任意一条）：
 
 ```
-① 镜像（国内推荐，能立即拿到最新内容）
+① 镜像（国内推荐）
 https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
 
-② jsDelivr CDN（用 latest 标签绕过缓存）
-https://fastly.jsdelivr.net/gh/Dory815/pcl-mc-trivia@latest/publish/Custom.xaml
-
-③ GitHub Pages
+② GitHub Pages（官方线路）
 https://dory815.github.io/pcl-mc-trivia/Custom.xaml
+
+③ 备用镜像
+https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
 ```
 
-实测（校园网）：直连 `raw.githubusercontent.com` 会超时；`gh-proxy.com` 虽然只有 226 毫秒，
-**但会缓存旧版本**，所以改用 ghproxy.net 与 jsDelivr 的 latest 标签。详见部署记录。
+实测（校园网）：直连 `raw.githubusercontent.com` 会超时；`gh-proxy.com` 与 jsDelivr
+**都会缓存旧版本**（曾导致用户一直看到报错的旧文件），所以改用 ghproxy.net 与 GitHub Pages。
 
 主页一次包含 4 组冷知识，点右上角按钮就在这 4 组之间轮换，**不用等服务器更新**。
 
