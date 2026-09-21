@@ -42,27 +42,31 @@ jobs:
       - name: 抽取冷知识并生成主页文件
         run: |
           # 频率提高到 10 分钟后，每次只补 1 个新条目，避免给 Wiki 造成压力
-          python generator/build_xaml.py --out publish --update-source --source-target 1 --version "$(date -u +%Y%m%d%H%M%S)"
+          # 注意：输出目录必须是仓库根目录——EdgeOne Pages 把仓库根目录当作站点根，
+          # 主页文件放在根目录，订阅地址才是干净的 https://站点/Custom.xaml
+          python generator/build_xaml.py --out . --update-source --source-target 1 --version "$(date -u +%Y%m%d%H%M%S)"
 
       - name: 额外生成几份"起始组不同"的副本
         run: |
           # 同一批内容、不同的起始组，发给不同的人，第一眼看到的不一样。
           # 想加更多份就照着写，start-group 取 1..12 之间的值。
-          VERSION="$(cat publish/Custom.xaml.ini)"
+          VERSION="$(cat Custom.xaml.ini)"
           for spec in "1:a" "4:b" "7:c" "10:d"; do
             group="${spec%%:*}"; tag="${spec##*:}"
-            python generator/build_xaml.py --out "publish/variant-$tag" \
+            python generator/build_xaml.py --out "variant/$tag" \
               --no-preview --start-group "$group" --tag "$tag" --version "$VERSION"
           done
 
       - name: 校验生成结果
-        run: python generator/check_output.py publish/Custom.xaml
+        run: python generator/check_output.py Custom.xaml
 
       - name: 把新内容提交回仓库
         run: |
           git config user.name "mc-trivia-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add publish data/facts.json
+          # 顺手把旧的 publish/ 目录删掉（第一次运行时会有，之后就没有了）
+          git rm -r --ignore-unmatch --quiet publish 2>/dev/null || true
+          git add Custom.xaml Custom.xaml.ini index.html variant data/facts.json
           if git diff --cached --quiet; then
             echo "内容没有变化，跳过提交"
           else
@@ -90,9 +94,19 @@ jobs:
           git push -f origin latest
 
       - name: 打包成 Pages 产物
+        # 即使提交那一步因为并发冲突失败，也要把已经生成好的产物发布出去
+        if: always()
+        run: |
+          rm -rf site
+          mkdir -p site
+          cp Custom.xaml Custom.xaml.ini index.html site/
+          cp -r variant site/ 2>/dev/null || true
+          ls -la site/
+
+      - name: 上传 Pages 产物
         uses: actions/upload-pages-artifact@v3
         with:
-          path: publish
+          path: site
 
   deploy:
     needs: build
