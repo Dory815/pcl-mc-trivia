@@ -77,6 +77,9 @@ def is_content_title(title):
 
 MIN_LEN = 15
 MAX_LEN = 200
+# 子条目（缩进的小条）只做补充说明，长度限制放宽一点，但它还是会换行显示
+MIN_SUB_LEN = 8
+MAX_SUB_LEN = 200
 BAD_CHARS = ("<", ">", "{{", "}}", "[[", "]]", "|", "\n")
 BAD_PREFIX = ("*", "#", "•", "：", ":")
 EDITOR_NOTES = ("本条目", "本页面", "本模板")
@@ -271,7 +274,16 @@ DYK_TITLES = ("你知道吗", "你知道嗎")
 
 
 def extract_dyk_facts(wikitext):
-    facts = []
+    """返回 [[主体, 子条目...], ...]。
+
+    有些条目会写成"一句话："下面再跟两条缩进的小条（wiki 里是 ** 开头），
+    过去会被当成三条独立句子，语义就不完整了。这里把子条目挂在主体下面，
+    渲染时按缩进显示。
+
+    注意：主体以「：」结尾是正常的（后面跟着子条目），不能当成残句丢掉。
+    只有在它后面没有任何子条目时，才说明是残缺内容，才丢弃。
+    """
+    items = []          # [(depth, text), ...]
     in_section = False
     section_level = 0
     for line in wikitext.split("\n"):
@@ -290,10 +302,44 @@ def extract_dyk_facts(wikitext):
         stripped = line.strip()
         if not stripped.startswith(("*", "#")):
             continue
-        text = clean_wiki_text(stripped.lstrip("*#").strip())
-        if is_good_fact(text):
-            facts.append(text)
-    return list(dict.fromkeys(facts))
+        depth = len(stripped) - len(stripped.lstrip("*#"))  # 1 = 主条目，2 及以上 = 子条目
+        items.append((depth, clean_wiki_text(stripped.lstrip("*#").strip())))
+
+    facts = []
+    pending = None
+    for depth, text in items:
+        if depth >= 2:
+            if pending is None:
+                continue
+            if MIN_SUB_LEN <= len(text) <= MAX_SUB_LEN:
+                pending["sub"].append(text)
+            continue
+        # 新的主条目：先把上一条收尾
+        if pending is not None:
+            facts.append(pending)
+        if is_good_fact(text) or text.endswith(("：", ":")):
+            pending = {"text": text, "sub": []}
+        else:
+            pending = None
+    if pending is not None:
+        facts.append(pending)
+
+    # 收尾时再筛一次：以冒号结尾却没有子条目的，属于残缺内容，丢掉
+    facts = [item for item in facts
+             if item["sub"] or not item["text"].endswith(("：", ":"))]
+    # 子条目也不要和主体完全重复
+    for item in facts:
+        item["sub"] = [s for s in dict.fromkeys(item["sub"]) if s != item["text"]]
+
+    # 去重（同一小节里偶尔会重复列同一条）
+    unique, seen = [], set()
+    for item in facts:
+        key = item["text"]
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(item)
+    return unique
 
 
 # ---------------------------------------------------------------- 质量过滤
@@ -365,20 +411,35 @@ def save_facts(entries):
 
 
 def merge_entries(old, new):
+    def fact_key(fact):
+        """新旧两种素材格式都要能当去重键用。"""
+        if isinstance(fact, dict):
+            return (fact.get("text", ""), tuple(fact.get("sub", []) or []))
+        return (str(fact), ())
+
     merged = {entry["title"]: entry for entry in old}
     for entry in new:
         if entry["title"] in merged:
-            merged[entry["title"]]["facts"] = list(
-                dict.fromkeys(merged[entry["title"]]["facts"] + entry["facts"]))
+            combined = merged[entry["title"]]["facts"] + entry["facts"]
+            deduped = {}
+            for fact in combined:
+                deduped.setdefault(fact_key(fact), fact)
+            merged[entry["title"]]["facts"] = list(deduped.values())
         else:
             merged[entry["title"]] = entry
     return sorted(merged.values(), key=lambda e: e["title"])
 
 
-def collect(target_pages, pool, seed=0):
-    """从候选池里抽条目抓取，每拿到一个就落盘。"""
+def collect(target_pages, pool, seed=0, refresh=False):
+    """从候选池里抽条目抓取，每拿到一个就落盘。
+
+    refresh=True 时连已有条目也重新解析一遍（解析规则改进后，用它刷新整个素材库）。
+    """
     rng = random.Random(seed)
-    existing = {entry["title"] for entry in load_json(facts_file(), [])}
+    if refresh:
+        existing = set()
+    else:
+        existing = {entry["title"] for entry in load_json(facts_file(), [])}
     candidates = [t for t in pool if t not in existing]
     rng.shuffle(candidates)
 
@@ -411,6 +472,8 @@ def main():
     parser.add_argument("--pages", type=int, default=40, help="目标条目数（默认 40）")
     parser.add_argument("--seed", type=int, default=0, help="随机种子，便于复现")
     parser.add_argument("--rebuild-pool", action="store_true", help="强制重建候选池")
+    parser.add_argument("--refresh", action="store_true",
+                        help="连已有条目也重新解析（解析规则改进后刷新整个素材库）")
     parser.add_argument("--out", type=Path, default=None, help="素材库输出路径（默认 data/facts.json）")
     args = parser.parse_args()
 
@@ -423,7 +486,8 @@ def main():
     if not pool:
         raise SystemExit("候选池是空的，检查网络或换个时间再试")
 
-    got, checked = collect(args.pages, pool, args.seed)
+    got, checked = collect(args.pages, pool, args.seed, refresh=args.refresh)
+    # 无论是否刷新，都要和文件里已有的条目合并，绝不能清空素材库
     entries = load_json(facts_file(), [])
     total_facts = sum(len(e["facts"]) for e in entries)
     log("")
