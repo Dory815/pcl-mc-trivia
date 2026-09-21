@@ -110,14 +110,18 @@ https://你的地址/Custom.xaml?t={time}
 
 ```
 ① GitHub Pages（推荐：实测最快）
-https://dory815.github.io/pcl-mc-trivia/Custom.xaml
+https://dory815.github.io/pcl-mc-trivia/Custom.xaml?t={time}
 
 ② 备用镜像（GitHub Pages 不通时用）
-https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
+https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml?t={time}
 
 ③ 备用镜像二
-https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
+https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml?t={time}
 ```
+
+末尾的 `?t={time}` 是 PCL 的替换标记（每次启动都会变成当前时间），
+作用是**每次打开 PCL 都重新拉一次最新内容**，而不是等缓存过期。
+不加也能用，只是要在 PCL 检测到版本变化后才会更新。
 
 实测（校园网）：直连 `raw.githubusercontent.com` 会超时；`gh-proxy.com` 与 jsDelivr
 **都会缓存旧版本**（曾导致一直看到报错的旧文件）。速度对比：GitHub Pages 约 0.5 秒，
