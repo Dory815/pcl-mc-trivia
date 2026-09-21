@@ -9,8 +9,8 @@
 | 项目 | 值 |
 | --- | --- |
 | 仓库 | <https://github.com/Dory815/pcl-mc-trivia>（公开） |
-| 主页文件 | `publish/Custom.xaml`（由工作流自动更新） |
-| 版本号文件 | `publish/Custom.xaml.ini` |
+| 主页文件 | `Custom.xaml`（仓库根目录，由工作流自动更新） |
+| 版本号文件 | `Custom.xaml.ini`（同在根目录） |
 | 更新频率 | 每小时一次（UTC 整点，北京时间也是整点） |
 | 部署方式 | GitHub Actions 每小时重新抽取 → 自动提交 → 发布到 Pages |
 
@@ -21,10 +21,10 @@
 https://dory815.github.io/pcl-mc-trivia/Custom.xaml
 
 ② 备用镜像（约 1.1 秒）
-https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
+https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/Custom.xaml
 
 ③ 备用镜像二
-https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
+https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/Custom.xaml
 ```
 
 网页预览（不用开 PCL 就能看当前内容）：<https://dory815.github.io/pcl-mc-trivia/>
