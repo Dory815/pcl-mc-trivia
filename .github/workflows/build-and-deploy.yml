@@ -4,10 +4,10 @@ name: 更新冷知识主页
 
 on:
   schedule:
-    # GitHub 用 UTC 时间。这里表示每小时的第 0 分钟。
-    # 每 6 小时一次：0 */6 * * *
-    # 每天一次（北京时间早 8 点）：0 0 * * *  （UTC 0 点 = 北京 8 点）
-    - cron: "0 * * * *"
+    # 每 10 分钟一次（GitHub 用 UTC，但每 10 分钟这种写法与时区无关）。
+    # 注意：GitHub 的定时任务不准时，实测高峰期会延迟半小时以上，
+    # 所以实际更新间隔可能是 10 分钟到 1 小时不等，这是平台限制。
+    - cron: "*/10 * * * *"
   workflow_dispatch:
   push:
     branches:
@@ -41,7 +41,8 @@ jobs:
 
       - name: 抽取冷知识并生成主页文件
         run: |
-          python generator/build_xaml.py --out publish --update-source --source-target 3 --version "$(date -u +%Y%m%d%H%M%S)"
+          # 频率提高到 10 分钟后，每次只补 1 个新条目，避免给 Wiki 造成压力
+          python generator/build_xaml.py --out publish --update-source --source-target 1 --version "$(date -u +%Y%m%d%H%M%S)"
 
       - name: 额外生成几份"起始组不同"的副本
         run: |
