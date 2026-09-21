@@ -17,15 +17,17 @@
 ### 三条订阅地址（实测均可用）
 
 ```
-① 镜像（推荐，国内访问稳）
-https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
-
-② GitHub Pages（官方线路，校园网/海外更顺）
+① GitHub Pages（推荐：实测最快，约 0.5 秒）
 https://dory815.github.io/pcl-mc-trivia/Custom.xaml
 
-③ 备用镜像
+② 备用镜像（约 1.1 秒）
+https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
+
+③ 备用镜像二
 https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml
 ```
+
+网页预览（不用开 PCL 就能看当前内容）：<https://dory815.github.io/pcl-mc-trivia/>
 
 ### 关键发现：镜像站的缓存差别很大
 
@@ -64,8 +66,22 @@ https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/
 
 ### 1. GitHub 的定时任务不一定会准时跑
 
-仓库 09:53 建好，工作流 09:54 首次成功，但 10:00 那次定时触发过了十几分钟还没出现。
-GitHub 对免费账号的 cron 常有延迟（官方的说法是高峰期可能延迟甚至跳过）。
+**实测数据**（2026/09/20~21，cron 原本设为每小时一次）：
+
+| 应该触发（UTC） | 实际触发（UTC） | 延迟 |
+| --- | --- | --- |
+| 13:00 | 13:51 | +51 分钟 |
+| 17:00 | 17:12 | +12 分钟 |
+| 20:00 | 20:06 | +6 分钟 |
+| 22:00 | 22:51 | +51 分钟 |
+| 00:00 | 00:43 | +43 分钟 |
+
+14 小时里本该跑 14 次，实际只跑了 5 次，平均间隔 2.9 小时。
+GitHub 对免费账号的 cron 有明显延迟与丢单，这是平台限制，**不是配置问题**。
+
+因此 2026/09/21 把 cron 改成每 10 分钟一次：即使大部分被延迟或跳过，
+实际更新间隔也会明显好于"每小时一次却两三个小时才跑一次"。
+同时把每次补抓的条目数从 3 降到 1，控制对 Wiki 的请求量。
 
 所以不能指望"整点一定换内容"。真正让用户随时能看到新内容的是下面这个机制。
 
