@@ -113,10 +113,10 @@ https://你的地址/Custom.xaml?t={time}
 https://dory815.github.io/pcl-mc-trivia/Custom.xaml?t={time}
 
 ② 备用镜像（GitHub Pages 不通时用）
-https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml?t={time}
+https://ghproxy.net/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/Custom.xaml?t={time}
 
 ③ 备用镜像二
-https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/publish/Custom.xaml?t={time}
+https://ghfast.top/https://raw.githubusercontent.com/Dory815/pcl-mc-trivia/main/Custom.xaml?t={time}
 ```
 
 末尾的 `?t={time}` 是 PCL 的替换标记（每次启动都会变成当前时间），
