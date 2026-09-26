@@ -36,30 +36,30 @@
 </head>
 <body>
 <div class="wrap">
-  <p class="tip">这是浏览器预览（版本 20260925223454）。PCL 里点右上角按钮会在各组之间轮换。</p>
+  <p class="tip">这是浏览器预览（版本 20260926005040）。PCL 里点右上角按钮会在各组之间轮换。</p>
   <div class="card">
     <div class="card-head">
       <h1>MC 冷知识</h1>
       <button class="refresh" onclick="reroll()" title="换一批">&#10227;</button>
     </div>
     <div id="facts">        <div class="fact">
-          <div class="fact-title">1. 门</div>
-          <div class="fact-text">当玩家潜行进入开启的门内部时再关闭门，玩家将无法解除潜行，直到离开门的区域。这可能是因为潜行时关上门会导致游戏检测到玩家头顶上有方块而不能解除潜行，类似于潜行通过台阶的下面时无法解除潜行。</div>
+          <div class="fact-title">1. 木栅栏</div>
+          <div class="fact-text">与其他木栅栏不同，竹栅栏的模型使用单独的纹理，而不是使用对应的木板纹理。竹栅栏的碎片粒子也使用单独的纹理。</div>
         </div>
         <div class="fact">
-          <div class="fact-title">2. 望远镜</div>
-          <div class="fact-text">Minecraft Live 2020中展示的望远镜的英文名称为“Telescope”（天文望远镜），但在快照实装时则改为“Spyglass”，这是因为后者更符合游戏中望远镜的款式。</div>
+          <div class="fact-title">2. 绊线钩</div>
+          <div class="fact-text">绊线线路状态变化时，绊线钩先记录线路的状态，再依次设置对侧绊线钩和自身的状态以及绊线的attached状态（若绊线钩的attached状态有变化）；若绊线钩附着门或活板门，线路中绊线钩信号的变化可以激活或取消激活门或活板门，从而破坏附着在门上的绊线钩，并引起绊线钩和绊线状态的变化，但这些变化可以被先更新线路状态的绊线钩后续设置的状态覆盖。</div>
         </div>
         <div class="fact">
-          <div class="fact-title">3. 蜘蛛</div>
-          <div class="fact-text">蜘蛛其实是浮在地面上的，尽管看起来并不明显。</div>
+          <div class="fact-title">3. 活化方块</div>
+          <div class="fact-text">在游戏源代码中，负责活化方块形式的羊毛减小玩家重力的方法名为playerChaseTheSkies，这同时也是对追逐天空小更新的引用。</div>
         </div>
 </div>
   </div>
   <div class="card">
     <div class="info-head">
       <h2>PCL2 MC 冷知识主页</h2>
-      <span class="ver">版本 223454</span>
+      <span class="ver">版本 005040</span>
     </div>
     <div class="info-btns">
       <a href="https://github.com/Dory815/pcl-mc-trivia" target="_blank">GitHub</a>
