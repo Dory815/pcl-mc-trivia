@@ -1,4 +1,4 @@
-<!-- 由 build_xaml.py 自动生成，生成时间 2026/10/14 03:58，版本 20261014035855，共 12 组冷知识，起始第 7 组 c -->
+<!-- 由 build_xaml.py 自动生成，生成时间 2026/10/14 09:22，版本 20261014092256，共 12 组冷知识，起始第 7 组 c -->
 <local:MyCard Title="MC 冷知识" Margin="0,0,0,15">
         <local:MyIconButton Height="22" Width="22" Margin="9"
                            VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="{variable:Clip1:Collapsed}"
@@ -268,265 +268,51 @@
         <Grid>
                     <StackPanel Visibility="{variable:Clip1:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 铁砧" />
+                                   Text="1. 海豚" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="铁砧的爆炸抗性与黑曜石和附魔台同为1200点，仅次于游戏内爆炸抗性第二高的基岩，然而其合成材料铁块的爆炸抗性只有6点。" />
+                                   Text="海豚给玩家引路时出现的白色粒子实际上与烟花火箭的尾迹粒子是相同的。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 气泡柱" />
+                                   Text="2. 掠夺者" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="与其他实体一致，下落的方块（基岩版雪和滴水石锥除外）也能被涌流气泡柱向上推，导致这些方块在水体顶部上下浮动。" />
+                                   Text="掠夺者即使持有其他非弩的武器，也不会攻击。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 绊线钩" />
+                                   Text="3. 锻造模板" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="若绊线线路中的一个绊线被破坏后迅速插入一个绊线钩，线路东、北侧绊线钩和所有绊线的状态不会更新。" />
+                                   Text="若不考虑其他复制材料的可再生性，锻造模板必须通过宝库战利品才能实现可再生。这是因为可用于复制锻造模板的钻石同样依赖宝库战利品实现可再生，而宝库可以被每个玩家打开无限次数，且试炼钥匙和不祥试炼钥匙是可再生资源。" />
                         <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
                             <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
                                        Foreground="#4A8CF7" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 铁砧"
-                                ToolTip="https://zh.minecraft.wiki/w/%E9%93%81%E7%A0%A7"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%93%81%E7%A0%A7" />
+                                Foreground="#4A8CF7" Text="1. 海豚"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%B5%B7%E8%B1%9A"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%B5%B7%E8%B1%9A" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 气泡柱"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%B0%94%E6%B3%A1%E6%9F%B1"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%B0%94%E6%B3%A1%E6%9F%B1" />
+                                Foreground="#4A8CF7" Text="2. 掠夺者"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%8E%A0%E5%A4%BA%E8%80%85"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%8E%A0%E5%A4%BA%E8%80%85" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 绊线钩"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%BB%8A%E7%BA%BF%E9%92%A9"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%BB%8A%E7%BA%BF%E9%92%A9" />
+                                Foreground="#4A8CF7" Text="3. 锻造模板"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%94%BB%E9%80%A0%E6%A8%A1%E6%9D%BF"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%94%BB%E9%80%A0%E6%A8%A1%E6%9D%BF" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip2:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 烈焰人" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="尽管没有可见的脚，烈焰人仍然可以产生脚步声。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 铁傀儡" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="铁傀儡在Xbox 360 Marketplace是一个可购买物品。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 曲奇" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="由于2个小麦和1个可可豆即可合成8个曲奇，并且曲奇成功增加堆肥层数的概率较小麦和可可豆更高（85%），用小麦和可可豆合成曲奇再进行堆肥所获得的骨粉数是分开堆肥的约3.5倍。" />
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
-                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
-                                       Foreground="#4A8CF7" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 烈焰人"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%83%88%E7%84%B0%E4%BA%BA"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%83%88%E7%84%B0%E4%BA%BA" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 铁傀儡"
-                                ToolTip="https://zh.minecraft.wiki/w/%E9%93%81%E5%82%80%E5%84%A1"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%93%81%E5%82%80%E5%84%A1" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 曲奇"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%9B%B2%E5%A5%87"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%9B%B2%E5%A5%87" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip3:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 钓鱼竿" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="隐藏HUD时，玩家手持的钓鱼竿和基岩版会被隐藏，但钓鱼竿的其余部分仍然可见。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 悬挂式告示牌" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="悬挂式告示牌的首个概念图出自Agnes Larsson的女儿。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 画" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="画背面的纹理修改自木板的纹理，但其色调与游戏中存在的任何一种木板都不相同。" />
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
-                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
-                                       Foreground="#4A8CF7" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 钓鱼竿"
-                                ToolTip="https://zh.minecraft.wiki/w/%E9%92%93%E9%B1%BC%E7%AB%BF"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%92%93%E9%B1%BC%E7%AB%BF" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 悬挂式告示牌"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%82%AC%E6%8C%82%E5%BC%8F%E5%91%8A%E7%A4%BA%E7%89%8C"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%82%AC%E6%8C%82%E5%BC%8F%E5%91%8A%E7%A4%BA%E7%89%8C" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 画"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%94%BB"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%94%BB" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip4:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 潜影盒" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="当物品栏、快捷栏、副手槽37个格全部用潜影盒填满，并且每个都用堆叠64件的物品填充里面的27格，那么玩家能够持有999组总计63936件的物品。当其中有36个潜影盒和1个末影箱时（且其中同样填满潜影盒），玩家能够持有1701组总计108864件的物品。" />
-                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
-                                   Text="· 若是玩家骑着或牵着装备有箱子的驴或骡，且箱子全部用潜影盒填满时，每只驴或骡能多提供405组共计25920件物品。" />
-                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
-                                   Text="· 若是玩家同时牵着全部由力量值Strength为5、装备着箱子的羊驼组成的驼队，并且箱子全部用潜影盒填满时，每个驼队能多提供4050组总计259200件的物品。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. Moog City" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="曲名引用自穆格合成器（Moog Synthesizer），C418在订购穆格合成器后创作了此曲目，但实际上并未在本曲中应用它。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. Jason Major" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="他偶尔加入官方Minecraft直播，他证实了他会在新的可染色床预览时出现在直播中。" />
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
-                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
-                                       Foreground="#4A8CF7" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 潜影盒"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%BD%9C%E5%BD%B1%E7%9B%92"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%BD%9C%E5%BD%B1%E7%9B%92" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. Moog City"
-                                ToolTip="https://zh.minecraft.wiki/w/Moog_City"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/Moog_City" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. Jason Major"
-                                ToolTip="https://zh.minecraft.wiki/w/Jason_Major"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/Jason_Major" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip5:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 旗帜图案" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="愚人节玩笑版本23w13a_or_b加入了“Mojang新徽标”旗帜图案，该图案像是新版Mojang徽标中的字母“A”，以及游戏Among Us中的角色。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 玩家" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="Steve脸部的络腮胡于生存测试中被移除，在2022年8月19日发布的启动器2.3.376，以及Java版1.19.3、基岩版1.19.50中，Steve的胡子才被重新加入。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 骷髅马" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="马的模型（包含骷髅马）由Mo&apos; Creatures Mod的作者DrZhark（John Olarte）协助设计，Minecraft中马的模型是以这个Mod里面的马作为基准的。DrZhark因此出现在了鸣谢名单中。" />
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
-                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
-                                       Foreground="#4A8CF7" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 旗帜图案"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%97%97%E5%B8%9C%E5%9B%BE%E6%A1%88"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%97%97%E5%B8%9C%E5%9B%BE%E6%A1%88" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 玩家"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%8E%A9%E5%AE%B6"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%8E%A9%E5%AE%B6" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 骷髅马"
-                                ToolTip="https://zh.minecraft.wiki/w/%E9%AA%B7%E9%AB%85%E9%A9%AC"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%AA%B7%E9%AB%85%E9%A9%AC" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip6:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 犰狳" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="生物投票和概念艺术中展示的均是双眼位于头部两侧的犰狳形象，而在最初实装时它的眼睛被移到了正脸，这是因为画师Jasper Boerstra认为如果犰狳的头部正面只有空空的前额，玩家与之交互时就会难以建立起情感纽带。" />
-                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
-                                   Text="· 收到社区反馈后，犰狳的眼睛又被移回了侧面。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 锻造模板" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="据LadyAgnes所说，锻造模板的原名为“锻造蓝图”（Smithing Blueprints），而“蓝图”一词过于现代，偏离了Minecraft的幻想性世界。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 栅栏" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="如果把地毯放在栅栏顶部，玩家可以跳上地毯进而越过栅栏，而除了兔子和史莱姆外的生物都不可以。" />
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
-                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
-                                       Foreground="#4A8CF7" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 犰狳"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%8A%B0%E7%8B%B3"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%8A%B0%E7%8B%B3" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 锻造模板"
-                                ToolTip="https://zh.minecraft.wiki/w/%E9%94%BB%E9%80%A0%E6%A8%A1%E6%9D%BF"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%94%BB%E9%80%A0%E6%A8%A1%E6%9D%BF" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 栅栏"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%A0%85%E6%A0%8F"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%A0%85%E6%A0%8F" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip7:Visible}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 海龟" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="海龟脱落海龟鳞甲的特性参考于现实。现实中的水生龟在成长过程会经历类似蛇蜕皮的鳞甲脱落过程，而陆生龟没有脱落鳞甲的过程。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 热带鱼（物品）" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="热带鱼的纹理没有在纹理更新中被更新。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 幽匿块" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="幽匿块的英文名“Sculk”源于“skulk”一词，意为“隐匿、潜伏”。该名称受到Jeb给潜影贝（Shulker）命名过程的启发。" />
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
-                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
-                                       Foreground="#4A8CF7" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 海龟"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%B5%B7%E9%BE%9F"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%B5%B7%E9%BE%9F" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 热带鱼（物品）"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%83%AD%E5%B8%A6%E9%B1%BC%EF%BC%88%E7%89%A9%E5%93%81%EF%BC%89"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%83%AD%E5%B8%A6%E9%B1%BC%EF%BC%88%E7%89%A9%E5%93%81%EF%BC%89" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 幽匿块"
-                                ToolTip="https://zh.minecraft.wiki/w/%E5%B9%BD%E5%8C%BF%E5%9D%97"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%B9%BD%E5%8C%BF%E5%9D%97" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip8:Collapsed}">
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 平滑石头台阶" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="與其他半磚不同，平滑石头台阶的侧面纹理没有被其他方块使用。平滑石头双层台阶的外观是独特的，而所有其他双层台阶都与另一个完整方块具有相同的外观。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 旗帜" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="考虑到旗帜图案共42种，染料共16种，旗帜共16种，每个旗帜最多可以有6层图案。因此生存模式下可以做出的不重复的旗帜总数理论值为：16 \times \sum_{k=0}^6 (16 \times 42)^k = 1475646641940097552 \approx 1.47 \times 10^{18}" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 栅栏门" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="使用命令命令将栅栏门放入玩家或一些人形生物的头盔槽会使其在视觉上变成一副眼镜。可在彩蛋了解更多此类彩蛋。" />
-                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
-                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
-                                       Foreground="#4A8CF7" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 平滑石头台阶"
-                                ToolTip="https://zh.minecraft.wiki/w/%E5%B9%B3%E6%BB%91%E7%9F%B3%E5%A4%B4%E5%8F%B0%E9%98%B6"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%B9%B3%E6%BB%91%E7%9F%B3%E5%A4%B4%E5%8F%B0%E9%98%B6" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 旗帜"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%97%97%E5%B8%9C"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%97%97%E5%B8%9C" />
-                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 栅栏门"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%A0%85%E6%A0%8F%E9%97%A8"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%A0%85%E6%A0%8F%E9%97%A8" />
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Visibility="{variable:Clip9:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
                                    Text="1. 监守者" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
                                    Text="监守者施加黑暗效果的方式与远古守卫者造成挖掘疲劳的方式相似。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 钻石块" />
+                                   Text="2. 时髦的传送门（方块）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="钻石块与金块的纹理只有颜色不同，纹理更新前也是如此。" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 嘎枝" />
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="如果使用指令强行把嘎枝传送到下界或者末地，其会在传送后立即死亡（而不是因为失-{}-活而碎裂），即使在对应维度存在符合嘎枝int-array实体数据字段并且已经激活的嘎枝之心。" />
+                                   Text="該方塊的命名空間IDneither_portal是一個雙關語：" />
                         <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
-                                   Text="· 因此死亡的嘎枝会触发蓄风、盘丝和渗浆效果，但仍不触发寄生效果。" />
+                                   Text="· 在英文中，「neither」（意為「兩者皆非」）與「Nether」（下界）字形與讀音相近，指代該傳送門既不屬於主世界，也不屬於傳統的地獄。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 其中文譯名「不界傳送門」也刻意與「地獄傳送門」非常相似。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 床" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="Steve wearing White Bed.png;Alex wearing White Bed.png若使用命令命令将床放入玩家或一些人形生物的头盔槽，床会出现在头顶，看起来像一顶冕冠。可在彩蛋了解更多此类彩蛋。" />
                         <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
                             <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
                                        Foreground="#4A8CF7" />
@@ -535,103 +321,329 @@
                                 ToolTip="https://zh.minecraft.wiki/w/%E7%9B%91%E5%AE%88%E8%80%85"
                                 EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%9B%91%E5%AE%88%E8%80%85" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 钻石块"
-                                ToolTip="https://zh.minecraft.wiki/w/%E9%92%BB%E7%9F%B3%E5%9D%97"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%92%BB%E7%9F%B3%E5%9D%97" />
+                                Foreground="#4A8CF7" Text="2. 时髦的传送门（方块）"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%97%B6%E9%AB%A6%E7%9A%84%E4%BC%A0%E9%80%81%E9%97%A8%EF%BC%88%E6%96%B9%E5%9D%97%EF%BC%89"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%97%B6%E9%AB%A6%E7%9A%84%E4%BC%A0%E9%80%81%E9%97%A8%EF%BC%88%E6%96%B9%E5%9D%97%EF%BC%89" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 嘎枝"
-                                ToolTip="https://zh.minecraft.wiki/w/%E5%98%8E%E6%9E%9D"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%98%8E%E6%9E%9D" />
+                                Foreground="#4A8CF7" Text="3. 床"
+                                ToolTip="https://zh.minecraft.wiki/w/%E5%BA%8A"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%BA%8A" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip3:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 书架" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="书架顶部和底部默认使用与橡木木板相同的纹理。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 下界石英矿石" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="下界石英矿石在下界大量生成，且会掉落较多的经验，这使得挖掘它成为在Minecraft中获取经验最快的方法之一。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 玩家" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="在游戏《火柴人至高对决》（Supreme Duelist Stickman）中，Steve的头是一个可穿戴帽子，此外还有可放置圆石，TNT以及活塞等方块的镐。" />
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
+                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
+                                       Foreground="#4A8CF7" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="1. 书架"
+                                ToolTip="https://zh.minecraft.wiki/w/%E4%B9%A6%E6%9E%B6"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E4%B9%A6%E6%9E%B6" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="2. 下界石英矿石"
+                                ToolTip="https://zh.minecraft.wiki/w/%E4%B8%8B%E7%95%8C%E7%9F%B3%E8%8B%B1%E7%9F%BF%E7%9F%B3"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E4%B8%8B%E7%95%8C%E7%9F%B3%E8%8B%B1%E7%9F%BF%E7%9F%B3" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="3. 玩家"
+                                ToolTip="https://zh.minecraft.wiki/w/%E7%8E%A9%E5%AE%B6"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%8E%A9%E5%AE%B6" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip4:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 幻翼" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="幻翼的音效取自Samuel Åberg儿子的尖叫声。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 水" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="将使用更新抑制得到的下落的含水脚手架送入下界后，水会正常存在，得到更新后流动，原理类似于命令。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 末影人" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="末影人的颌部纹理其实位于它的外层皮肤，正常状态下与内层的头部重叠；被激怒时其头部上移，因而显露出张大的嘴巴。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 基岩版用命令命令将末影人的恼怒动画（animation.enderman.scary_face）应用于溺尸也会出现同样的效果，使其头部被抽离外层皮肤。" />
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
+                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
+                                       Foreground="#4A8CF7" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="1. 幻翼"
+                                ToolTip="https://zh.minecraft.wiki/w/%E5%B9%BB%E7%BF%BC"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%B9%BB%E7%BF%BC" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="2. 水"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%B0%B4"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%B0%B4" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="3. 末影人"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%9C%AB%E5%BD%B1%E4%BA%BA"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%9C%AB%E5%BD%B1%E4%BA%BA" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip5:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 附魔台" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="书架发出的粒子是由附魔台生成的。粒子先是生成在附魔台内部，然后立即被传送到书架内部。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 狼" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="下列狼的外观可能参考了现实中的一些犬科或鬣狗科动物：" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 灰狼与现实中的哈士奇相似。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 黑狼与现实中的黑化灰狼或黑化红狼相似。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 赭红狼与现实中的埃塞俄比亚狼和豺相似。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 斑点狼与现实中的非洲野犬相似。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 条纹狼与现实中的土狼和条纹鬣狗相似。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 雪狼与现实中的北极狼相似。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 闪电束" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="但这对苦力怕转变成闪电苦力怕无效。这是因为后者只是修改了数据值，而并非生成新实体。" />
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
+                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
+                                       Foreground="#4A8CF7" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="1. 附魔台"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%99%84%E9%AD%94%E5%8F%B0"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%99%84%E9%AD%94%E5%8F%B0" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="2. 狼"
+                                ToolTip="https://zh.minecraft.wiki/w/%E7%8B%BC"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%8B%BC" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="3. 闪电束"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%97%AA%E7%94%B5%E6%9D%9F"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%97%AA%E7%94%B5%E6%9D%9F" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip6:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 淡蓝色染料" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="淡蓝色染料的颜色与格式化代码中的聊天字体颜色相匹配。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 打火石" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="打火石图标左上方的“C”形物叫做火镰。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 潮涌核心" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="潮涌核心在寻找敌对生物时会出现一个打开的眼睛，否则就会闭上眼睛。" />
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
+                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
+                                       Foreground="#4A8CF7" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="1. 淡蓝色染料"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%B7%A1%E8%93%9D%E8%89%B2%E6%9F%93%E6%96%99"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%B7%A1%E8%93%9D%E8%89%B2%E6%9F%93%E6%96%99" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="2. 打火石"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%89%93%E7%81%AB%E7%9F%B3"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%89%93%E7%81%AB%E7%9F%B3" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="3. 潮涌核心"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%BD%AE%E6%B6%8C%E6%A0%B8%E5%BF%83"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%BD%AE%E6%B6%8C%E6%A0%B8%E5%BF%83" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip7:Visible}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 淡灰色染料" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="淡灰色染料的颜色与格式化代码中的聊天字体颜色相匹配。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 幻术师" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="据Cojomax99说，幻术师拥有在袭击中生成的数据，尽管它不会在队伍中自然生成。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 潜影贝" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="如果潜影贝的顶面和侧面存在方块时，会附着到其侧面方块上。" />
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
+                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
+                                       Foreground="#4A8CF7" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="1. 淡灰色染料"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%B7%A1%E7%81%B0%E8%89%B2%E6%9F%93%E6%96%99"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%B7%A1%E7%81%B0%E8%89%B2%E6%9F%93%E6%96%99" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="2. 幻术师"
+                                ToolTip="https://zh.minecraft.wiki/w/%E5%B9%BB%E6%9C%AF%E5%B8%88"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%B9%BB%E6%9C%AF%E5%B8%88" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="3. 潜影贝"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%BD%9C%E5%BD%B1%E8%B4%9D"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%BD%9C%E5%BD%B1%E8%B4%9D" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip8:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 降雨" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="雨在云层上也会存在。Notch的解释是云层之上的灰色区域才是雨真正的来源。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 睡莲" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="普通的方块可以从下方放置到睡莲底部。这样做会使睡莲被破坏，但先前放置的方块会留在原位。该特性使得玩家可以在水面凭空放置方块。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 超级马铃薯怪" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="在语言文件中，对于该生物有一个未使用的Boss栏名称：“Mega Spud the Frogspawn Foreman”（超级马铃薯怪·蛙卵话事人）。" />
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
+                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
+                                       Foreground="#4A8CF7" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="1. 降雨"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%99%8D%E9%9B%A8"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%99%8D%E9%9B%A8" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="2. 睡莲"
+                                ToolTip="https://zh.minecraft.wiki/w/%E7%9D%A1%E8%8E%B2"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%9D%A1%E8%8E%B2" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="3. 超级马铃薯怪"
+                                ToolTip="https://zh.minecraft.wiki/w/%E8%B6%85%E7%BA%A7%E9%A9%AC%E9%93%83%E8%96%AF%E6%80%AA"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E8%B6%85%E7%BA%A7%E9%A9%AC%E9%93%83%E8%96%AF%E6%80%AA" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Visibility="{variable:Clip9:Collapsed}">
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="1. 青蛙" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="青蛙拥有独特的游泳动画，在水下也不会溺水而死，但青蛙不属于水生生物。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="2. 仙人掌" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="仙人掌方块的底部并不会对玩家造成伤害。" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
+                                   Text="3. 酿造台" />
+                        <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
+                                   Text="无论玩家朝向什么方向放置，酿造台总是面向东方。" />
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
+                            <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
+                                       Foreground="#4A8CF7" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="1. 青蛙"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%9D%92%E8%9B%99"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%9D%92%E8%9B%99" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="2. 仙人掌"
+                                ToolTip="https://zh.minecraft.wiki/w/%E4%BB%99%E4%BA%BA%E6%8E%8C"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E4%BB%99%E4%BA%BA%E6%8E%8C" />
+                            <local:MyTextButton Margin="0,0,8,0" FontSize="11"
+                                Foreground="#4A8CF7" Text="3. 酿造台"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%85%BF%E9%80%A0%E5%8F%B0"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%85%BF%E9%80%A0%E5%8F%B0" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip10:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 掠夺者" />
+                                   Text="1. 熊猫" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="但掠夺者不装填附有快速装填VI或等级更高的弩，更不会进行攻击。" />
+                                   Text="棕色熊猫是大熊猫的真实亚种，被称为秦岭大熊猫。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 雕刻南瓜" />
+                                   Text="2. 煤炭块（Minecraft 2.0）" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="僵尸、僵尸村民、溺尸、尸壳、僵尸猪灵、骷髅、凋灵骷髅、流浪者、沼骸和焦骸在万圣夜（10月31日）时生成有22.5%的概率戴上雕刻南瓜，但是杀死它们后雕刻南瓜并不会掉落。" />
+                                   Text="将其放入工作台分解为煤炭时，分解所得的煤炭无法与其他煤炭堆叠，原因是分解产物与普通煤炭的物品数据值不同：前者为32767，后者为0。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 强化深板岩" />
+                                   Text="3. 骷髅马" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="强化深板岩包含了类似于幽匿尖啸体和幽匿催发体的白色骨状材料和蓝色幽匿纹理。" />
+                                   Text="骷髅马杀死苦力怕（如通过命令命令）时会掉落一张音乐唱片。" />
                         <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
                             <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
                                        Foreground="#4A8CF7" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 掠夺者"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%8E%A0%E5%A4%BA%E8%80%85"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%8E%A0%E5%A4%BA%E8%80%85" />
+                                Foreground="#4A8CF7" Text="1. 熊猫"
+                                ToolTip="https://zh.minecraft.wiki/w/%E7%86%8A%E7%8C%AB"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%86%8A%E7%8C%AB" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 雕刻南瓜"
-                                ToolTip="https://zh.minecraft.wiki/w/%E9%9B%95%E5%88%BB%E5%8D%97%E7%93%9C"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%9B%95%E5%88%BB%E5%8D%97%E7%93%9C" />
+                                Foreground="#4A8CF7" Text="2. 煤炭块（Minecraft 2.0）"
+                                ToolTip="https://zh.minecraft.wiki/w/%E7%85%A4%E7%82%AD%E5%9D%97%EF%BC%88Minecraft_2.0%EF%BC%89"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%85%A4%E7%82%AD%E5%9D%97%EF%BC%88Minecraft_2.0%EF%BC%89" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 强化深板岩"
-                                ToolTip="https://zh.minecraft.wiki/w/%E5%BC%BA%E5%8C%96%E6%B7%B1%E6%9D%BF%E5%B2%A9"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%BC%BA%E5%8C%96%E6%B7%B1%E6%9D%BF%E5%B2%A9" />
+                                Foreground="#4A8CF7" Text="3. 骷髅马"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%AA%B7%E9%AB%85%E9%A9%AC"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%AA%B7%E9%AB%85%E9%A9%AC" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip11:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 更长的线" />
+                                   Text="1. 荧石" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="更长的线的规则表述“Enable string concatenation”（启用线的串接配方）双关了字符串串接。" />
+                                   Text="在下界较矮的天花板上生成的荧石可能会与地面接触。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. 猫" />
+                                   Text="2. 骆驼" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="白猫的皮肤外观基于泰国御猫，泰国的一个稀有猫品种。" />
+                                   Text="但骆驼冲刺时异侧前腿和后腿的摆动方向相同，与马等生物移动时一致。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 玻璃" />
+                                   Text="3. 末影龙" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="基岩版在未启用Vibrant Visuals的情况下，玻璃处于物品实体形态时，或被玩家（第三人称）或盔甲架等生物手持时，所有其他的视觉透明方块（铜格栅及其变种、水、黏液块、蜂蜜块、信标和冰等）被其遮住的部分都不会被渲染。" />
+                                   Text="显示碰撞箱后能发现末影龙的碰撞箱并不是一直都和身体各部位动画同步对齐，在末影龙于空中转向时会更为明显，这可能导致玩家击中了末影龙的模型，却因为没有击中碰撞箱而无法造成伤害。" />
                         <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
                             <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
                                        Foreground="#4A8CF7" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 更长的线"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%9B%B4%E9%95%BF%E7%9A%84%E7%BA%BF"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%9B%B4%E9%95%BF%E7%9A%84%E7%BA%BF" />
+                                Foreground="#4A8CF7" Text="1. 荧石"
+                                ToolTip="https://zh.minecraft.wiki/w/%E8%8D%A7%E7%9F%B3"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E8%8D%A7%E7%9F%B3" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. 猫"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%8C%AB"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%8C%AB" />
+                                Foreground="#4A8CF7" Text="2. 骆驼"
+                                ToolTip="https://zh.minecraft.wiki/w/%E9%AA%86%E9%A9%BC"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E9%AA%86%E9%A9%BC" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 玻璃"
-                                ToolTip="https://zh.minecraft.wiki/w/%E7%8E%BB%E7%92%83"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E7%8E%BB%E7%92%83" />
+                                Foreground="#4A8CF7" Text="3. 末影龙"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%9C%AB%E5%BD%B1%E9%BE%99"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%9C%AB%E5%BD%B1%E9%BE%99" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Visibility="{variable:Clip12:Collapsed}">
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="1. 上锁的箱子" />
+                                   Text="1. 台阶" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="基岩版虽然并没有加入上锁的箱子，但在语言文件中有一条名为tile.lockedchest.name的未使用本地化键名。" />
+                                   Text="玩家不能在不跳跃的情况下从灵魂沙直接走上一个下半台阶——这不仅适用于灵魂沙，同时也都适用于任何高度差为7格的方块，因为玩家不跳跃时最高能走上0.6格高。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="2. Minecraft电影投票活动" />
+                                   Text="2. 末影螨" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="此次活动的获胜作品将有机会出现在A Minecraft Movie Squared正片或片尾字幕中。" />
+                                   Text="Dinnerbone曾提到，他有一个关于末影螨和龙蛋的“终极计划”。然而该想法最终未能实现。" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4" FontWeight="Bold"
-                                   Text="3. 村民" />
+                                   Text="3. 丁香" />
                         <TextBlock TextWrapping="Wrap" Margin="0,0,0,4"
-                                   Text="在A Minecraft Movie中，史蒂夫的台词也提到了这一点。" />
+                                   Text="在现实中，丁香（Lilac）泛指丁香属（Syringa）的任何开花植物。" />
+                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,4"
+                                   Text="· 同时在基岩版文件中，丁香又被称为“Syringa”。" />
                         <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Left">
                             <TextBlock Text="来源：" FontSize="11" VerticalAlignment="Center"
                                        Foreground="#4A8CF7" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="1. 上锁的箱子"
-                                ToolTip="https://zh.minecraft.wiki/w/%E4%B8%8A%E9%94%81%E7%9A%84%E7%AE%B1%E5%AD%90"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E4%B8%8A%E9%94%81%E7%9A%84%E7%AE%B1%E5%AD%90" />
+                                Foreground="#4A8CF7" Text="1. 台阶"
+                                ToolTip="https://zh.minecraft.wiki/w/%E5%8F%B0%E9%98%B6"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E5%8F%B0%E9%98%B6" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="2. Minecraft电影投票活动"
-                                ToolTip="https://zh.minecraft.wiki/w/Minecraft%E7%94%B5%E5%BD%B1%E6%8A%95%E7%A5%A8%E6%B4%BB%E5%8A%A8"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/Minecraft%E7%94%B5%E5%BD%B1%E6%8A%95%E7%A5%A8%E6%B4%BB%E5%8A%A8" />
+                                Foreground="#4A8CF7" Text="2. 末影螨"
+                                ToolTip="https://zh.minecraft.wiki/w/%E6%9C%AB%E5%BD%B1%E8%9E%A8"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%9C%AB%E5%BD%B1%E8%9E%A8" />
                             <local:MyTextButton Margin="0,0,8,0" FontSize="11"
-                                Foreground="#4A8CF7" Text="3. 村民"
-                                ToolTip="https://zh.minecraft.wiki/w/%E6%9D%91%E6%B0%91"
-                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E6%9D%91%E6%B0%91" />
+                                Foreground="#4A8CF7" Text="3. 丁香"
+                                ToolTip="https://zh.minecraft.wiki/w/%E4%B8%81%E9%A6%99"
+                                EventType="打开网页" EventData="https://zh.minecraft.wiki/w/%E4%B8%81%E9%A6%99" />
                         </StackPanel>
                     </StackPanel>
         </Grid>
@@ -668,7 +680,7 @@
                        Text="PCL2 MC 冷知识主页" />
             <TextBlock Grid.Column="1" FontSize="11" VerticalAlignment="Center"
                        Foreground="{DynamicResource ColorBrush3}"
-                       Text="版本 035855" ToolTip="20261014035855" />
+                       Text="版本 092256" ToolTip="20261014092256" />
         </Grid>
         <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
             <local:MyIconTextButton Margin="0,0,10,0" Text="GitHub" ColorType="Highlight"
